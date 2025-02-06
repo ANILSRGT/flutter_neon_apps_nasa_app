@@ -1,0 +1,5 @@
+- Astronomy Picture of the Day (APOD): Astronomi fotoğrafları.
+- Mars Rover Photos: Mars’tan fotoğraflar.
+- Earth Science API: Dünya’daki doğal afetler, iklim değişiklikleri, okyanus akıntıları.
+- NEOWS (Asteroid Verileri): Dünya'ya yaklaşan asteroitler ve uyarılar.
+- NASA Exoplanet Data: Keşfedilen ötegezegenler

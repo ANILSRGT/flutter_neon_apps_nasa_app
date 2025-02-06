@@ -1,0 +1,66 @@
+name: neon_apps_nasa_app
+description: "A new Flutter project."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  #~ Network
+  #* Used to make network requests
+  dio: ^5.8.0+1
+
+  #~ Video Player
+  #* Used to fix the black screen issue in the video_player plugin
+  chewie: ^1.10.0
+  #* Used to play videos
+  video_player: ^2.9.2
+  #* Used to play youtube videos
+  youtube_player_flutter: ^9.1.1
+
+  #~ UI
+  #* Used to app logo and other vector images
+  flutter_svg: ^2.0.17
+  #* Used to loading indicator
+  rive: ^0.13.20
+
+  #~ State Management
+  #* Used to manage the state of theme
+  provider: ^6.1.2
+  #* Used to manage the state of pages
+  mobx: ^2.5.0
+  #* Used to manage the state of pages
+  flutter_mobx: ^2.3.0
+
+  #~ Navigation
+  #* Used to navigate between screens
+  auto_route: ^9.3.0+1
+
+  #~ Utils
+  #* Used to svg manipulation
+  xml: ^6.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^7.0.0
+
+  #~ Code Generation
+  #* Used to generate code for auto_route
+  build_runner: ^2.4.14
+  #* Used to generate code for auto_route
+  auto_route_generator: ^9.0.0
+  #* Used to generate code for mobx
+  mobx_codegen: ^2.7.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/app/
+    - assets/rives/
+    - assets/vectors/
