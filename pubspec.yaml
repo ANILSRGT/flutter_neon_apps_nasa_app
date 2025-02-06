@@ -40,10 +40,6 @@ dependencies:
   #* Used to navigate between screens
   auto_route: ^9.3.0+1
 
-  #~ Utils
-  #* Used to svg manipulation
-  xml: ^6.5.0
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -64,3 +60,4 @@ flutter:
     - assets/app/
     - assets/rives/
     - assets/vectors/
+    - assets/images/

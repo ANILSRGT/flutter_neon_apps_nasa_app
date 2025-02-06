@@ -27,8 +27,24 @@ abstract class _HomePageViewModelBase with Store {
     _featuredPageIndex = index;
   }
 
+  void onFeaturedPageSelected(int index) {
+    featuredPageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @action
   void changeHomePageTab(HomePageTabs tab) {
     _currentHomePageTab = tab;
+  }
+
+  void onTabPressed(HomePageTabs tab) {
+    bottomNavPageController.animateToPage(
+      tab.index,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 }

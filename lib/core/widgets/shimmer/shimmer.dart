@@ -79,7 +79,7 @@ class Shimmer extends StatefulWidget {
             baseColor,
             highlightColor,
             baseColor,
-            baseColor
+            baseColor,
           ],
           stops: const <double>[0, 0.35, 0.5, 0.65, 1],
         );

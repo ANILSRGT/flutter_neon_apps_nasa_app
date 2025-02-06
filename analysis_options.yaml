@@ -9,6 +9,7 @@ analyzer:
     unused_field: ignore
     lines_longer_than_80_chars: ignore
     unused_local_variable: ignore
+    unused_element: ignore
 
 linter:
   rules:

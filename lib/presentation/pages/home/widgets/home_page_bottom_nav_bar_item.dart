@@ -24,14 +24,6 @@ class _HomePageBottomNavBarItem extends StatelessWidget {
     return _HomePageBottomNavBarItem.iconColor(tab, context);
   }
 
-  void _onTap() {
-    _viewModel.bottomNavPageController.animateToPage(
-      tab.index,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Observer(
@@ -39,7 +31,7 @@ class _HomePageBottomNavBarItem extends StatelessWidget {
         return Tooltip(
           message: tab.title,
           child: IconButton(
-            onPressed: _onTap,
+            onPressed: () => _viewModel.onTabPressed(tab),
             color: _iconColor(context),
             icon: icon,
           ),

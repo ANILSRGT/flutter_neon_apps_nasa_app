@@ -1,5 +1,7 @@
 part of 'explore_page_imports.dart';
 
+final _viewModel = ExplorePageViewModel();
+
 @RoutePage()
 class ExplorePage extends StatelessWidget {
   const ExplorePage({super.key});

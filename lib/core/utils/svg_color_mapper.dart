@@ -12,7 +12,11 @@ class SvgColorMapper extends ColorMapper {
 
   @override
   Color substitute(
-      String? id, String elementName, String attributeName, Color color) {
+    String? id,
+    String elementName,
+    String attributeName,
+    Color color,
+  ) {
     return color == fromColor ? toColor : color;
   }
 }

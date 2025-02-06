@@ -6,9 +6,7 @@ class _MarsPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: Text('Mars Page'),
-      ),
+      body: _MarsPageBody(),
     );
   }
 }

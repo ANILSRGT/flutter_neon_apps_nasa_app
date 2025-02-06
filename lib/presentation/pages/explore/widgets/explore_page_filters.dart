@@ -8,13 +8,29 @@ class _ExplorePageFilters extends StatelessWidget {
     return IntrinsicHeight(
       child: Row(
         children: [
-          const Expanded(
-            child: SearchBar(),
+          Expanded(
+            child: CustomInputField(
+              controller: _viewModel.searchController,
+              hint: 'Search',
+              prefixIcon: const Icon(Icons.search),
+              keyboardType: TextInputType.text,
+              textInputAction: TextInputAction.search,
+            ),
           ),
           AppDoubleValues.md.extSizedbox.width,
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.filter_list),
+          AspectRatio(
+            aspectRatio: 1,
+            child: IconButton(
+              onPressed: () {},
+              style: IconButton.styleFrom(
+                backgroundColor: context.appThemeExt.appColors.primary.value,
+                foregroundColor: context.appThemeExt.appColors.primary.onColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: AppDoubleValues.md.extRadius.border.all,
+                ),
+              ),
+              icon: const Icon(Icons.filter_list),
+            ),
           ),
         ],
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
 
-class TitleText extends StatelessWidget {
-  const TitleText({
+class SubtitleText extends StatelessWidget {
+  const SubtitleText({
     required this.title,
     super.key,
     this.color,
@@ -24,8 +24,8 @@ class TitleText extends StatelessWidget {
       textAlign: textAlign,
       maxLines: maxLines,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
-      style: context.extTheme.textTheme.titleLarge?.copyWith(
-        fontWeight: fontWeight ?? FontWeight.bold,
+      style: context.extTheme.textTheme.titleMedium?.copyWith(
+        fontWeight: fontWeight ?? FontWeight.w400,
         color: color,
       ),
     );

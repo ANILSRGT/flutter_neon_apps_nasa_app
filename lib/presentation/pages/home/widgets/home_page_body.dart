@@ -11,7 +11,6 @@ class _HomePageBody extends StatelessWidget {
         children: [
           AppDoubleValues.xl.extSizedbox.height,
           const SizedBox(height: 300, child: _HomePageFeaturedCarousel()),
-          const SizedBox(height: 100), //! For bottom nav bar
         ],
       ),
     );
