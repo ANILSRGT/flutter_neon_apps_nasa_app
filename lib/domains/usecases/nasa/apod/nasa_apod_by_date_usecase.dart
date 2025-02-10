@@ -11,6 +11,6 @@ class NasaApodByDateUsecase
   Future<ResponseModel<NasaApodModel>> execute(
     NasaApodByDateParams params,
   ) async {
-    return Injection.I.get<NasaRepo>().getNasaApodByDate(params);
+    return Injection.I.read<NasaRepo>().getNasaApodByDate(params);
   }
 }

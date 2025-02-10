@@ -10,8 +10,6 @@ mixin _SplashPageViewMixin on State<_SplashPageView> {
   }
 
   Future<void> _init() async {
-    await Future.delayed(const Duration(seconds: 2), () {});
-
     if (mounted) await context.router.replace(const HomeRoute());
   }
 }

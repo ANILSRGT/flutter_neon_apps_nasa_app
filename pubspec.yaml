@@ -33,6 +33,10 @@ dependencies:
   flutter_svg: ^2.0.17
   #* Used to loading indicator
   rive: ^0.13.20
+  #* Used to display images from the network with caching
+  cached_network_image: ^3.4.1
+  #* Used to toast messages
+  oktoast: ^3.4.0
 
   #~ State Management
   #* Used to manage the state of theme
@@ -49,6 +53,11 @@ dependencies:
   #~ Navigation
   #* Used to navigate between screens
   auto_route: ^9.3.0+1
+
+  #~ Utils
+  #* Used to display the date and time
+  intl: ^0.20.2
+  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   flutter_test:
@@ -71,3 +80,4 @@ flutter:
     - assets/rives/
     - assets/vectors/
     - assets/images/
+    - .env

@@ -8,8 +8,8 @@ final class Injection {
   final _sl = GetIt.instance;
 
   void init() {
-    _NasaFeatureInjection(_sl).init();
+    _NasaInjection(_sl).init();
   }
 
-  T get<T>() => _sl.get();
+  T read<T extends Object>() => _sl.get();
 }

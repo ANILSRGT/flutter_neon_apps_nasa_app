@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:neon_apps_nasa_app/core/enums/app_double_values.dart';
 import 'package:neon_apps_nasa_app/core/extensions/radius_app_double_values_extension.dart';
 import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
@@ -12,11 +13,14 @@ class CustomInputField extends StatefulWidget {
     required this.textInputAction,
     super.key,
     this.obscureText = false,
+    this.inputFormatters,
     this.prefixIcon,
     this.suffixIcon,
     this.onChanged,
     this.focusNode,
     this.nextFocusNode,
+    this.readOnly = false,
+    this.onTap,
   });
 
   final TextEditingController controller;
@@ -28,7 +32,10 @@ class CustomInputField extends StatefulWidget {
   final TextInputAction textInputAction;
   final FocusNode? focusNode;
   final FocusNode? nextFocusNode;
+  final List<TextInputFormatter>? inputFormatters;
   final void Function(String value)? onChanged;
+  final bool readOnly;
+  final void Function()? onTap;
 
   @override
   State<CustomInputField> createState() => _CustomInputFieldState();
@@ -44,6 +51,9 @@ class _CustomInputFieldState extends State<CustomInputField> {
       obscureText: widget.obscureText,
       onChanged: widget.onChanged,
       focusNode: widget.focusNode,
+      inputFormatters: widget.inputFormatters,
+      readOnly: widget.readOnly,
+      onTap: widget.onTap,
       onSubmitted: (_) {
         if (widget.nextFocusNode != null) {
           FocusScope.of(context).requestFocus(widget.nextFocusNode);

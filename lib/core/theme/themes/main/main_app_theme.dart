@@ -168,12 +168,25 @@ final class MainAppTheme extends IAppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: colors.primary.value,
+          foregroundColor: colors.primary.onColor,
+          iconColor: colors.primary.onColor,
           textStyle: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      ),
+      datePickerTheme: DatePickerThemeData(
+        backgroundColor: colors.background.byBrightness(isDark).value,
+        inputDecorationTheme: InputDecorationTheme(
+          labelStyle: TextStyle(
+            color: colors.background.byBrightness(isDark).onColor,
+          ),
+          hintStyle: TextStyle(
+            color: colors.background.byBrightness(isDark).onColor,
           ),
         ),
       ),

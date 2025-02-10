@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:neon_apps_nasa_app/core/configs/app_env.dart';
+import 'package:neon_apps_nasa_app/core/enums/app_double_values.dart';
+import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
 import 'package:neon_apps_nasa_app/core/providers/theme_notifier.dart';
 import 'package:neon_apps_nasa_app/core/routes/app_router.dart';
+import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
+import 'package:neon_apps_nasa_app/injections/injection_imports.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  await AppEnv.I.init();
+
+  Injection.I.init();
 
   runApp(
     MultiProvider(
@@ -32,6 +42,24 @@ class MainApp extends StatelessWidget {
       theme: themeNotifier.currentTheme.theme.getThemeData(false),
       darkTheme: themeNotifier.currentTheme.theme.getThemeData(true),
       themeMode: themeNotifier.currentThemeMode,
+      builder: (context, child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaler: TextScaler.noScaling,
+          ),
+          child: OKToast(
+            position: ToastPosition.bottom,
+            backgroundColor: context.appThemeExt.appColors.grey.value,
+            textStyle: context.extTheme.textTheme.bodyLarge?.copyWith(
+              color: context.appThemeExt.appColors.grey.onColor,
+            ),
+            radius: AppDoubleValues.md.value,
+            dismissOtherOnShow: true,
+            textAlign: TextAlign.center,
+            child: child!,
+          ),
+        );
+      },
       routerConfig: _appRouter.config(),
     );
   }

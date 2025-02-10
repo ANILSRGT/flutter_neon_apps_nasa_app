@@ -11,6 +11,6 @@ class NasaApodMultipleUsecase
   Future<ResponseModel<List<NasaApodModel>>> execute(
     NasaApodMultipleParams params,
   ) async {
-    return Injection.I.get<NasaRepo>().getNasaApodMultiple(params);
+    return Injection.I.read<NasaRepo>().getNasaApodMultiple(params);
   }
 }

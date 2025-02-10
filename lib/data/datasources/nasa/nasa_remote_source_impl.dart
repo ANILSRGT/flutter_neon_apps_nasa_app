@@ -3,16 +3,22 @@ import 'package:neon_apps_nasa_app/core/models/error/error_model.dart';
 import 'package:neon_apps_nasa_app/core/models/response/response_model.dart';
 import 'package:neon_apps_nasa_app/data/datasources/nasa/nasa_remote_source.dart';
 import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_apod_entity.dart';
+import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_rover_photo_entity.dart';
 import 'package:neon_apps_nasa_app/data/query_keys/nasa/nasa_apod_query_keys.dart';
+import 'package:neon_apps_nasa_app/data/query_keys/nasa/nasa_rover_photos_query_keys.dart';
 import 'package:neon_apps_nasa_app/domains/params/nasa/apod/nasa_apod_by_date_params.dart';
 import 'package:neon_apps_nasa_app/domains/params/nasa/apod/nasa_apod_multiple_params.dart';
+import 'package:neon_apps_nasa_app/domains/params/nasa/rover_photos/nasa_rover_photos_get_params.dart';
 
 class NasaRemoteSourceImpl extends NasaRemoteSource {
   NasaRemoteSourceImpl({
     required Dio nasaApodDio,
-  }) : _nasaApodDio = nasaApodDio;
+    required Dio nasaRoverDio,
+  })  : _nasaApodDio = nasaApodDio,
+        _nasaRoverDio = nasaRoverDio;
 
   final Dio _nasaApodDio;
+  final Dio _nasaRoverDio;
 
   @override
   Future<ResponseModel<NasaApodEntity>> getNasaApod() async {
@@ -105,6 +111,41 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
         error: ErrorModel(
           message: 'Failed to get data',
           throwMessage: 'NasaRemoteSourceImpl.getNasaApodMultiple/catch : $e',
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ResponseModel<List<NasaRoverPhotoEntity>>> getNasaRoverPhotos(
+    NasaRoverPhotosGetParams params,
+  ) async {
+    try {
+      final response = await _nasaRoverDio.get<Map<String, dynamic>>(
+        '/${params.roverType.name}/photos',
+        queryParameters: {
+          NasaRoverPhotosQueryKeys.earthDate: params.earthDate,
+          if (params.cameraType != null)
+            NasaRoverPhotosQueryKeys.camera: params.cameraType!.name,
+        },
+      );
+      final data = response.data;
+      if (data == null) {
+        return const ResponseModelFail(
+          error: ErrorModel(
+            message: 'Data not found',
+            throwMessage:
+                'NasaRemoteSourceImpl.getNasaRoverPhotos : Response data is null',
+          ),
+        );
+      }
+      final entities = NasaRoverPhotoEntity.listFromJson(data);
+      return ResponseModelSuccess(data: entities);
+    } on Exception catch (e) {
+      return ResponseModelFail(
+        error: ErrorModel(
+          message: 'Failed to get data',
+          throwMessage: 'NasaRemoteSourceImpl.getNasaRoverPhotos/catch : $e',
         ),
       );
     }

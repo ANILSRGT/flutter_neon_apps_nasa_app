@@ -7,6 +7,6 @@ import 'package:neon_apps_nasa_app/injections/injection_imports.dart';
 class NasaApodGetUsecase implements IUseCase<NasaApodModel> {
   @override
   Future<ResponseModel<NasaApodModel>> execute() async {
-    return Injection.I.get<NasaRepo>().getNasaApod();
+    return Injection.I.read<NasaRepo>().getNasaApod();
   }
 }
