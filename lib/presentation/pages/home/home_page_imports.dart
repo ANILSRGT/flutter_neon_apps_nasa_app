@@ -11,6 +11,7 @@ import 'package:neon_apps_nasa_app/core/extensions/sizedbox_app_double_values_ex
 import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
 import 'package:neon_apps_nasa_app/core/widgets/shimmer/shimmer.dart';
+import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_apod_entity.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/explore/explore_page_imports.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/favorites/favorites_page_imports.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/home/home_page_view_model.dart';
@@ -31,4 +32,5 @@ part 'widgets/home_page_body_page_view.dart';
 part 'widgets/home_page_featured_title.dart';
 part 'widgets/home_page_featured_carousel.dart';
 part 'widgets/home_page_featured_carousel_page_view.dart';
+part 'widgets/home_page_featured_carousel_page_view_item.dart';
 part 'widgets/home_page_featured_carousel_page_view_dots.dart';

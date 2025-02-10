@@ -20,3 +20,4 @@ linter:
     flutter_style_todos: false
     use_setters_to_change_properties: false
     avoid_setters_without_getters: false
+    one_member_abstracts: false

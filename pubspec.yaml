@@ -14,6 +14,12 @@ dependencies:
   #* Used to make network requests
   dio: ^5.8.0+1
 
+  #~ Cache
+  #* Used to locally data for offline use
+  hive: ^2.2.3
+  #* Used to easy to use hive
+  hive_flutter: ^1.1.0
+
   #~ Video Player
   #* Used to fix the black screen issue in the video_player plugin
   chewie: ^1.10.0
@@ -35,6 +41,10 @@ dependencies:
   mobx: ^2.5.0
   #* Used to manage the state of pages
   flutter_mobx: ^2.3.0
+
+  #~ Dependency Injection
+  #* Used to inject dependencies (clean architecture)
+  get_it: ^8.0.3
 
   #~ Navigation
   #* Used to navigate between screens
