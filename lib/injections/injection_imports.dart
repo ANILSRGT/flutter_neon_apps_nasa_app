@@ -8,6 +8,7 @@ import 'package:neon_apps_nasa_app/domains/repositories/nasa/nasa_repo.dart';
 import 'package:neon_apps_nasa_app/domains/usecases/nasa/apod/nasa_apod_by_date_usecase.dart';
 import 'package:neon_apps_nasa_app/domains/usecases/nasa/apod/nasa_apod_get_usecase.dart';
 import 'package:neon_apps_nasa_app/domains/usecases/nasa/apod/nasa_apod_multiple_usecase.dart';
+import 'package:neon_apps_nasa_app/domains/usecases/nasa/library/nasa_library_get_usecase.dart';
 import 'package:neon_apps_nasa_app/domains/usecases/nasa/rover_photos/nasa_rover_photos_get_usecase.dart';
 
 part 'injection.dart';

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobx/mobx.dart';
-import 'package:neon_apps_nasa_app/domains/enums/nasa_rover_camera_types.dart';
 import 'package:neon_apps_nasa_app/domains/enums/nasa_rover_types.dart';
 import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_rover_photo_model.dart';
 import 'package:neon_apps_nasa_app/domains/params/nasa/rover_photos/nasa_rover_photos_get_params.dart';
@@ -30,9 +29,6 @@ abstract class _MarsPageViewModelBase with Store {
   NasaRoverTypes _selectedRover = NasaRoverTypes.curiosity;
 
   @observable
-  NasaRoverCameraTypes _selectedCamera = NasaRoverCameraTypes.none;
-
-  @observable
   ObservableFuture<List<NasaRoverPhotoModel>?> _roverPhotos =
       ObservableFuture.value(null);
 
@@ -41,9 +37,6 @@ abstract class _MarsPageViewModelBase with Store {
 
   @computed
   NasaRoverTypes get selectedRover => _selectedRover;
-
-  @computed
-  NasaRoverCameraTypes get selectedCamera => _selectedCamera;
 
   @computed
   ObservableFuture<List<NasaRoverPhotoModel>?> get roverPhotos => _roverPhotos;
@@ -61,12 +54,6 @@ abstract class _MarsPageViewModelBase with Store {
   }
 
   @action
-  void setSelectedCamera(NasaRoverCameraTypes value) {
-    _selectedCamera = value;
-    cameraController.text = value.displayName;
-  }
-
-  @action
   Future<void> exploreRoverPhotos() async {
     _roverPhotos = ObservableFuture(
       Injection.I
@@ -75,9 +62,6 @@ abstract class _MarsPageViewModelBase with Store {
             NasaRoverPhotosGetParams(
               earthDate: selectedEarthDate,
               roverType: selectedRover,
-              cameraType: selectedCamera != NasaRoverCameraTypes.none
-                  ? selectedCamera
-                  : null,
             ),
           )
           .then((val) {

@@ -8,4 +8,15 @@ class ExplorePageViewModel = _ExplorePageViewModelBase
 
 abstract class _ExplorePageViewModelBase with Store {
   final searchController = TextEditingController();
+
+  @observable
+  bool _isFilterVisible = false;
+
+  @computed
+  bool get isFilterVisible => _isFilterVisible;
+
+  @action
+  void toggleFilterVisibility() {
+    _isFilterVisible = !_isFilterVisible;
+  }
 }

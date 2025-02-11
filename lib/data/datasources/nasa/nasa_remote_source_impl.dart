@@ -3,22 +3,28 @@ import 'package:neon_apps_nasa_app/core/models/error/error_model.dart';
 import 'package:neon_apps_nasa_app/core/models/response/response_model.dart';
 import 'package:neon_apps_nasa_app/data/datasources/nasa/nasa_remote_source.dart';
 import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_apod_entity.dart';
+import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_library_entity.dart';
 import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_rover_photo_entity.dart';
 import 'package:neon_apps_nasa_app/data/query_keys/nasa/nasa_apod_query_keys.dart';
+import 'package:neon_apps_nasa_app/data/query_keys/nasa/nasa_library_query_keys.dart';
 import 'package:neon_apps_nasa_app/data/query_keys/nasa/nasa_rover_photos_query_keys.dart';
 import 'package:neon_apps_nasa_app/domains/params/nasa/apod/nasa_apod_by_date_params.dart';
 import 'package:neon_apps_nasa_app/domains/params/nasa/apod/nasa_apod_multiple_params.dart';
+import 'package:neon_apps_nasa_app/domains/params/nasa/library/nasa_library_get_params.dart';
 import 'package:neon_apps_nasa_app/domains/params/nasa/rover_photos/nasa_rover_photos_get_params.dart';
 
 class NasaRemoteSourceImpl extends NasaRemoteSource {
   NasaRemoteSourceImpl({
     required Dio nasaApodDio,
     required Dio nasaRoverDio,
+    required Dio nasaLibraryDio,
   })  : _nasaApodDio = nasaApodDio,
-        _nasaRoverDio = nasaRoverDio;
+        _nasaRoverDio = nasaRoverDio,
+        _nasaLibraryDio = nasaLibraryDio;
 
   final Dio _nasaApodDio;
   final Dio _nasaRoverDio;
+  final Dio _nasaLibraryDio;
 
   @override
   Future<ResponseModel<NasaApodEntity>> getNasaApod() async {
@@ -125,8 +131,6 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
         '/${params.roverType.name}/photos',
         queryParameters: {
           NasaRoverPhotosQueryKeys.earthDate: params.earthDate,
-          if (params.cameraType != null)
-            NasaRoverPhotosQueryKeys.camera: params.cameraType!.name,
         },
       );
       final data = response.data;
@@ -146,6 +150,45 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
         error: ErrorModel(
           message: 'Failed to get data',
           throwMessage: 'NasaRemoteSourceImpl.getNasaRoverPhotos/catch : $e',
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ResponseModel<NasaLibraryEntity>> getNasaLibrary(
+    NasaLibraryGetParams params,
+  ) async {
+    try {
+      final response = await _nasaLibraryDio.get<Map<String, dynamic>>(
+        '/',
+        queryParameters: {
+          NasaLibraryQueryKeys.query: params.query,
+          if (params.mediaType != null)
+            NasaLibraryQueryKeys.mediaType: params.mediaType!.name,
+          if (params.yearStart != null)
+            NasaLibraryQueryKeys.yearStart: params.yearStart,
+          if (params.yearEnd != null)
+            NasaLibraryQueryKeys.yearEnd: params.yearEnd,
+        },
+      );
+      final data = response.data;
+      if (data == null) {
+        return const ResponseModelFail(
+          error: ErrorModel(
+            message: 'Data not found',
+            throwMessage:
+                'NasaRemoteSourceImpl.getNasaLibrary : Response data is null',
+          ),
+        );
+      }
+      final entity = NasaLibraryEntity.fromJson(data);
+      return ResponseModelSuccess(data: entity);
+    } on Exception catch (e) {
+      return ResponseModelFail(
+        error: ErrorModel(
+          message: 'Failed to get data',
+          throwMessage: 'NasaRemoteSourceImpl.getNasaLibrary/catch : $e',
         ),
       );
     }

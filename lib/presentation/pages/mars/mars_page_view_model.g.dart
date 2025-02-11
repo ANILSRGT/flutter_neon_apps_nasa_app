@@ -23,13 +23,6 @@ mixin _$MarsPageViewModel on _MarsPageViewModelBase, Store {
           Computed<NasaRoverTypes>(() => super.selectedRover,
               name: '_MarsPageViewModelBase.selectedRover'))
       .value;
-  Computed<NasaRoverCameraTypes>? _$selectedCameraComputed;
-
-  @override
-  NasaRoverCameraTypes get selectedCamera => (_$selectedCameraComputed ??=
-          Computed<NasaRoverCameraTypes>(() => super.selectedCamera,
-              name: '_MarsPageViewModelBase.selectedCamera'))
-      .value;
   Computed<ObservableFuture<List<NasaRoverPhotoModel>?>>? _$roverPhotosComputed;
 
   @override
@@ -69,22 +62,6 @@ mixin _$MarsPageViewModel on _MarsPageViewModelBase, Store {
   set _selectedRover(NasaRoverTypes value) {
     _$_selectedRoverAtom.reportWrite(value, super._selectedRover, () {
       super._selectedRover = value;
-    });
-  }
-
-  late final _$_selectedCameraAtom =
-      Atom(name: '_MarsPageViewModelBase._selectedCamera', context: context);
-
-  @override
-  NasaRoverCameraTypes get _selectedCamera {
-    _$_selectedCameraAtom.reportRead();
-    return super._selectedCamera;
-  }
-
-  @override
-  set _selectedCamera(NasaRoverCameraTypes value) {
-    _$_selectedCameraAtom.reportWrite(value, super._selectedCamera, () {
-      super._selectedCamera = value;
     });
   }
 
@@ -140,22 +117,10 @@ mixin _$MarsPageViewModel on _MarsPageViewModelBase, Store {
   }
 
   @override
-  void setSelectedCamera(NasaRoverCameraTypes value) {
-    final _$actionInfo = _$_MarsPageViewModelBaseActionController.startAction(
-        name: '_MarsPageViewModelBase.setSelectedCamera');
-    try {
-      return super.setSelectedCamera(value);
-    } finally {
-      _$_MarsPageViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 selectedEarthDate: ${selectedEarthDate},
 selectedRover: ${selectedRover},
-selectedCamera: ${selectedCamera},
 roverPhotos: ${roverPhotos}
     ''';
   }

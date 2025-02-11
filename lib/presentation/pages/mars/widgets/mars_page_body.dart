@@ -18,8 +18,6 @@ class _MarsPageBody extends StatelessWidget {
                 AppDoubleValues.md.extSizedbox.height,
                 const _MarsPageRoverSelector(),
                 AppDoubleValues.md.extSizedbox.height,
-                const _MastPageRoverCameraSelector(),
-                AppDoubleValues.md.extSizedbox.height,
                 const _MarsPageSearchButton(),
                 AppDoubleValues.md.extSizedbox.height,
                 const _MarsPageRoverPhotos(),

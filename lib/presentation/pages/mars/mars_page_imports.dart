@@ -8,7 +8,6 @@ import 'package:neon_apps_nasa_app/core/extensions/radius_app_double_values_exte
 import 'package:neon_apps_nasa_app/core/extensions/sizedbox_app_double_values_extension.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
 import 'package:neon_apps_nasa_app/core/widgets/shimmer/shimmer.dart';
-import 'package:neon_apps_nasa_app/domains/enums/nasa_rover_camera_types.dart';
 import 'package:neon_apps_nasa_app/domains/enums/nasa_rover_types.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/mars/mars_page_view_model.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/card/rover_card.dart';
@@ -21,5 +20,4 @@ part 'widgets/mars_page_body.dart';
 part 'widgets/mars_page_rover_photos.dart';
 part 'widgets/mars_page_earth_date_picker.dart';
 part 'widgets/mars_page_rover_selector.dart';
-part 'widgets/mars_page_rover_camera_selector.dart';
 part 'widgets/mars_page_search_button.dart';

@@ -10,7 +10,7 @@ final class _NasaInjection {
 
     final nasaApodDio = Dio(
       BaseOptions(
-        baseUrl: 'https://api.nasa.gov/planetary',
+        baseUrl: 'https://api.nasa.gov/planetary/apod',
         queryParameters: {
           'api_key': nasaApiKey,
         },
@@ -26,17 +26,28 @@ final class _NasaInjection {
       ),
     );
 
+    final nasaLibraryDio = Dio(
+      BaseOptions(
+        baseUrl: 'https://images-api.nasa.gov/search',
+        queryParameters: {
+          'api_key': nasaApiKey,
+        },
+      ),
+    );
+
     _sl
       ..registerLazySingleton<NasaRemoteSource>(
         () => NasaRemoteSourceImpl(
           nasaApodDio: nasaApodDio,
           nasaRoverDio: nasaRoverDio,
+          nasaLibraryDio: nasaLibraryDio,
         ),
       )
       ..registerLazySingleton<NasaRepo>(NasaRepoImpl.new)
       ..registerFactory(NasaApodGetUsecase.new)
       ..registerFactory(NasaApodByDateUsecase.new)
       ..registerFactory(NasaApodMultipleUsecase.new)
-      ..registerFactory(NasaRoverPhotosGetUsecase.new);
+      ..registerFactory(NasaRoverPhotosGetUsecase.new)
+      ..registerFactory(NasaLibraryGetUsecase.new);
   }
 }
