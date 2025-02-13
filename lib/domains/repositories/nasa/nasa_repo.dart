@@ -26,4 +26,7 @@ abstract class NasaRepo {
   Future<ResponseModel<List<NasaLibraryItemModel>>> getNasaLibrary(
     NasaLibraryGetParams params,
   );
+
+  List<NasaLibraryItemModel> getNasaFavoriteLibrary();
+  Future<void> toggleFavorite(NasaLibraryItemModel params);
 }

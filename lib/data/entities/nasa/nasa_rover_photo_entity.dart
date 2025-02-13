@@ -6,31 +6,38 @@ class NasaRoverPhotoEntity extends NasaRoverPhotoModel {
   const NasaRoverPhotoEntity({
     super.id,
     super.sol,
-    super.camera,
+    this.cameraEntity,
     super.imgSrc,
     super.earthDate,
-    super.rover,
-  });
+    this.roverEntity,
+  }) : super(rover: roverEntity, camera: cameraEntity);
 
   factory NasaRoverPhotoEntity._fromJson(Map<String, dynamic> json) {
     return NasaRoverPhotoEntity(
-      id: json[idKey] as int?,
-      sol: json[solKey] as int?,
-      camera: json[cameraKey] != null
-          ? NasaRoverCameraEntity.fromJson(
-              json[cameraKey] as Map<String, dynamic>,
-            )
-          : null,
-      imgSrc: json[imgSrcKey] as String?,
-      earthDate: json[earthDateKey] as String?,
-      rover: json[roverKey] != null
-          ? NasaRoverEntity.fromJson(json[roverKey] as Map<String, dynamic>)
-          : null,
+      id: json[NasaRoverPhotoModel.idKey] as int?,
+      sol: json[NasaRoverPhotoModel.solKey] as int?,
+      cameraEntity:
+          json[NasaRoverPhotoModel.cameraKey] != null
+              ? NasaRoverCameraEntity.fromJson(
+                json[NasaRoverPhotoModel.cameraKey] as Map<String, dynamic>,
+              )
+              : null,
+      imgSrc: json[NasaRoverPhotoModel.imgSrcKey] as String?,
+      earthDate: json[NasaRoverPhotoModel.earthDateKey] as String?,
+      roverEntity:
+          json[NasaRoverPhotoModel.roverKey] != null
+              ? NasaRoverEntity.fromJson(
+                json[NasaRoverPhotoModel.roverKey] as Map<String, dynamic>,
+              )
+              : null,
     );
   }
 
+  final NasaRoverEntity? roverEntity;
+  final NasaRoverCameraEntity? cameraEntity;
+
   static List<NasaRoverPhotoEntity> listFromJson(Map<String, dynamic> json) {
-    final photos = json[photosKey] as List?;
+    final photos = json[NasaRoverPhotoModel.photosKey] as List?;
     if (photos == null) return [];
     return photos
         .map(
@@ -39,12 +46,4 @@ class NasaRoverPhotoEntity extends NasaRoverPhotoModel {
         )
         .toList();
   }
-
-  static const photosKey = 'photos';
-  static const idKey = 'id';
-  static const solKey = 'sol';
-  static const cameraKey = 'camera';
-  static const imgSrcKey = 'img_src';
-  static const earthDateKey = 'earth_date';
-  static const roverKey = 'rover';
 }

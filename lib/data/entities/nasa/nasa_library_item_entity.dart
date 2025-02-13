@@ -4,17 +4,27 @@ import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_library_item_data_ent
 import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_library_item_model.dart';
 
 class NasaLibraryItemEntity extends NasaLibraryItemModel {
-  const NasaLibraryItemEntity({
-    super.data,
+  NasaLibraryItemEntity({
+    this.dataEntity,
     super.libraryCollection,
     super.thumbnailUrl,
-  });
+  }) : super(data: dataEntity);
+
+  factory NasaLibraryItemEntity.fromModel({
+    required NasaLibraryItemModel? model,
+  }) {
+    return NasaLibraryItemEntity(
+      dataEntity: NasaLibraryItemDataEntity.fromModel(model: model?.data),
+      libraryCollection: model?.libraryCollection,
+      thumbnailUrl: model?.thumbnailUrl,
+    );
+  }
 
   factory NasaLibraryItemEntity._fromJson({
     required Map<String, dynamic> json,
     required List<String>? libraryCollection,
   }) {
-    final links = json[linksKey] as List?;
+    final links = json[NasaLibraryItemModel.linksKey] as List?;
     String? thumbnailUrl;
     if (links != null && links.isNotEmpty) {
       final previewLink =
@@ -22,21 +32,28 @@ class NasaLibraryItemEntity extends NasaLibraryItemModel {
                 (e) =>
                     e != null &&
                     e is Map &&
-                    e[linksRelKey] == linksRelPreviewValue,
+                    e[NasaLibraryItemModel.linksRelKey] ==
+                        NasaLibraryItemModel.linksRelPreviewValue,
                 orElse: () => <String, dynamic>{},
               )
               as Map<String, dynamic>;
-      thumbnailUrl = previewLink[linksHrefKey] as String?;
+      thumbnailUrl = previewLink[NasaLibraryItemModel.linksHrefKey] as String?;
     }
+    final dataList = json[NasaLibraryItemModel.dataKey] as List?;
+    final data =
+        dataList != null && dataList.isNotEmpty
+            ? NasaLibraryItemDataEntity.fromJson(
+              dataList.first as Map<String, dynamic>,
+            )
+            : null;
     return NasaLibraryItemEntity(
-      data:
-          json[dataKey] != null
-              ? NasaLibraryItemDataEntity.fromJsonList(json[dataKey] as List)
-              : null,
+      dataEntity: data,
       libraryCollection: libraryCollection,
       thumbnailUrl: thumbnailUrl,
     );
   }
+
+  final NasaLibraryItemDataEntity? dataEntity;
 
   static Future<List<NasaLibraryItemEntity>> fromJsonList({
     required List<dynamic> jsonList,
@@ -46,7 +63,7 @@ class NasaLibraryItemEntity extends NasaLibraryItemModel {
     final result = <NasaLibraryItemEntity>[];
     for (final json in jsonList.cast<Map<String, dynamic>>()) {
       final libraryCollection = await libraryCollectionCallback(
-        json[libraryCollectionJsonKey] as String,
+        json[NasaLibraryItemModel.libraryCollectionJsonKey] as String,
       );
       result.add(
         NasaLibraryItemEntity._fromJson(
@@ -57,13 +74,4 @@ class NasaLibraryItemEntity extends NasaLibraryItemModel {
     }
     return result;
   }
-
-  static const dataKey = 'data';
-  static const collectionKey = 'collection';
-  static const itemsKey = 'items';
-  static const libraryCollectionJsonKey = 'href';
-  static const linksKey = 'links';
-  static const linksRelKey = 'rel';
-  static const linksRelPreviewValue = 'preview';
-  static const linksHrefKey = 'href';
 }

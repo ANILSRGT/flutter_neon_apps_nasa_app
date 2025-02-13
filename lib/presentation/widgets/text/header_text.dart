@@ -3,7 +3,7 @@ import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart'
 
 class HeaderText extends StatelessWidget {
   const HeaderText({
-    required this.text,
+    required this.header,
     super.key,
     this.color,
     this.textAlign,
@@ -11,7 +11,7 @@ class HeaderText extends StatelessWidget {
     this.maxLines,
   });
 
-  final String text;
+  final String header;
   final Color? color;
   final TextAlign? textAlign;
   final FontWeight? fontWeight;
@@ -20,7 +20,7 @@ class HeaderText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      header,
       textAlign: textAlign,
       maxLines: maxLines,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,

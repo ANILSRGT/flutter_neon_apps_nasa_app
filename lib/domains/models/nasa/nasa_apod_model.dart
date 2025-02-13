@@ -16,4 +16,12 @@ class NasaApodModel {
   final String? serviceVersion;
   final String? title;
   final String? url;
+
+  static const dateKey = 'date';
+  static const explanationKey = 'explanation';
+  static const hdurlKey = 'hdurl';
+  static const mediaTypeKey = 'media_type';
+  static const serviceVersionKey = 'service_version';
+  static const titleKey = 'title';
+  static const urlKey = 'url';
 }

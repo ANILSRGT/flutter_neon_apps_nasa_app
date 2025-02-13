@@ -4,9 +4,7 @@ import 'package:neon_apps_nasa_app/core/configs/app_vectors.dart';
 import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
 
 class AppLogo extends StatelessWidget {
-  const AppLogo({
-    super.key,
-  });
+  const AppLogo({super.key});
 
   @override
   Widget build(BuildContext context) {

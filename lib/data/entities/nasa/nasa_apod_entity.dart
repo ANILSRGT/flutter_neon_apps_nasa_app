@@ -13,38 +13,26 @@ class NasaApodEntity extends NasaApodModel {
 
   factory NasaApodEntity.fromJson(Map<String, dynamic> json) {
     return NasaApodEntity(
-      date: json[dateKey] as String?,
-      explanation: json[explanationKey] as String?,
-      hdurl: json[hdurlKey] as String?,
-      mediaType: json[mediaTypeKey] as String?,
-      serviceVersion: json[serviceVersionKey] as String?,
-      title: json[titleKey] as String?,
-      url: json[urlKey] as String?,
+      date: json[NasaApodModel.dateKey] as String?,
+      explanation: json[NasaApodModel.explanationKey] as String?,
+      hdurl: json[NasaApodModel.hdurlKey] as String?,
+      mediaType: json[NasaApodModel.mediaTypeKey] as String?,
+      serviceVersion: json[NasaApodModel.serviceVersionKey] as String?,
+      title: json[NasaApodModel.titleKey] as String?,
+      url: json[NasaApodModel.urlKey] as String?,
     );
   }
-
-  static const dateKey = 'date';
-  static const explanationKey = 'explanation';
-  static const hdurlKey = 'hdurl';
-  static const mediaTypeKey = 'media_type';
-  static const serviceVersionKey = 'service_version';
-  static const titleKey = 'title';
-  static const urlKey = 'url';
 }
 
-List<NasaApodEntity> dummyNasaApodEntities = List.generate(
-  5,
-  (index) {
-    final date = DateTime.now().toUtc().subtract(Duration(days: index));
-    return NasaApodEntity.fromJson({
-      NasaApodEntity.dateKey: '${date.year}-${date.month}-${date.day}',
-      NasaApodEntity.explanationKey: 'This is a dummy explanation $index',
-      NasaApodEntity.hdurlKey: 'https://picsum.photos/1280/720?random=$index',
-      NasaApodEntity.mediaTypeKey: 'image',
-      NasaApodEntity.serviceVersionKey: 'v1',
-      NasaApodEntity.titleKey: 'Dummy Title $index',
-      NasaApodEntity.urlKey: 'https://picsum.photos/640/360?random=$index',
-    });
-  },
-  growable: false,
-);
+List<NasaApodEntity> dummyNasaApodEntities = List.generate(5, (index) {
+  final date = DateTime.now().toUtc().subtract(Duration(days: index));
+  return NasaApodEntity.fromJson({
+    NasaApodModel.dateKey: '${date.year}-${date.month}-${date.day}',
+    NasaApodModel.explanationKey: 'This is a dummy explanation $index',
+    NasaApodModel.hdurlKey: 'https://picsum.photos/1280/720?random=$index',
+    NasaApodModel.mediaTypeKey: 'image',
+    NasaApodModel.serviceVersionKey: 'v1',
+    NasaApodModel.titleKey: 'Dummy Title $index',
+    NasaApodModel.urlKey: 'https://picsum.photos/640/360?random=$index',
+  });
+});

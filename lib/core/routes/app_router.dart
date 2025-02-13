@@ -6,6 +6,7 @@ import 'package:neon_apps_nasa_app/presentation/pages/favorites/favorites_page_i
 import 'package:neon_apps_nasa_app/presentation/pages/home/home_page_imports.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/library_details/library_details_page_imports.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/mars/mars_page_imports.dart';
+import 'package:neon_apps_nasa_app/presentation/pages/settings/settings_page_imports.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/splash/splash_page_imports.dart';
 
 part 'app_router.gr.dart';
@@ -23,5 +24,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: FavoritesRoute.page),
     AutoRoute(page: MarsRoute.page),
     AutoRoute(page: LibraryDetailsRoute.page),
+    AutoRoute(page: SettingsRoute.page),
   ];
 }

@@ -43,7 +43,7 @@ class LibraryItemCard extends StatelessWidget {
               Padding(
                 padding: AppDoubleValues.md.extPadding.symmetric.horizontal,
                 child: LabelText(
-                  title: model.data?.first.title ?? 'N/A',
+                  title: model.data?.title ?? 'N/A',
                   textAlign: TextAlign.center,
                   maxLines: 2,
                 ),

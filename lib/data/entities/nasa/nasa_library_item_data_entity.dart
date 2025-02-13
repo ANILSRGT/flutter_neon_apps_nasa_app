@@ -1,7 +1,7 @@
 import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_library_item_data_model.dart';
 
 class NasaLibraryItemDataEntity extends NasaLibraryItemDataModel {
-  const NasaLibraryItemDataEntity({
+  NasaLibraryItemDataEntity({
     super.center,
     super.dateCreated,
     super.description,
@@ -13,38 +13,41 @@ class NasaLibraryItemDataEntity extends NasaLibraryItemDataModel {
     super.title,
   });
 
-  factory NasaLibraryItemDataEntity._fromJson(Map<String, dynamic> json) {
+  factory NasaLibraryItemDataEntity.fromModel({
+    required NasaLibraryItemDataModel? model,
+  }) {
     return NasaLibraryItemDataEntity(
-      center: json[centerKey] as String?,
-      dateCreated: json[dateCreatedKey] != null
-          ? DateTime.parse(json[dateCreatedKey] as String).toLocal()
-          : null,
-      description: json[descriptionKey] as String?,
-      keywords: (json[keywordsKey] as List?)?.map((e) => e as String).toList(),
-      location: json[locationKey] as String?,
-      mediaType: json[mediaTypeKey] as String?,
-      nasaId: json[nasaIdKey] as String?,
-      photographer: json[photographerKey] as String?,
-      title: json[titleKey] as String?,
+      center: model?.center,
+      dateCreated: model?.dateCreated,
+      description: model?.description,
+      keywords: model?.keywords,
+      location: model?.location,
+      mediaType: model?.mediaType,
+      nasaId: model?.nasaId,
+      photographer: model?.photographer,
+      title: model?.title,
     );
   }
 
-  static List<NasaLibraryItemDataEntity> fromJsonList(List<dynamic> jsonList) {
-    return jsonList
-        .map(
-          (json) =>
-              NasaLibraryItemDataEntity._fromJson(json as Map<String, dynamic>),
-        )
-        .toList();
+  factory NasaLibraryItemDataEntity.fromJson(Map<String, dynamic> json) {
+    return NasaLibraryItemDataEntity(
+      center: json[NasaLibraryItemDataModel.centerKey] as String?,
+      dateCreated:
+          json[NasaLibraryItemDataModel.dateCreatedKey] != null
+              ? DateTime.parse(
+                json[NasaLibraryItemDataModel.dateCreatedKey] as String,
+              ).toLocal()
+              : null,
+      description: json[NasaLibraryItemDataModel.descriptionKey] as String?,
+      keywords:
+          (json[NasaLibraryItemDataModel.keywordsKey] as List?)
+              ?.map((e) => e as String)
+              .toList(),
+      location: json[NasaLibraryItemDataModel.locationKey] as String?,
+      mediaType: json[NasaLibraryItemDataModel.mediaTypeKey] as String?,
+      nasaId: json[NasaLibraryItemDataModel.nasaIdKey] as String?,
+      photographer: json[NasaLibraryItemDataModel.photographerKey] as String?,
+      title: json[NasaLibraryItemDataModel.titleKey] as String?,
+    );
   }
-
-  static const centerKey = 'center';
-  static const dateCreatedKey = 'date_created';
-  static const descriptionKey = 'description';
-  static const keywordsKey = 'keywords';
-  static const locationKey = 'location';
-  static const mediaTypeKey = 'media_type';
-  static const nasaIdKey = 'nasa_id';
-  static const photographerKey = 'photographer';
-  static const titleKey = 'title';
 }

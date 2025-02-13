@@ -10,15 +10,10 @@ class NasaRoverCameraEntity extends NasaRoverCameraModel {
 
   factory NasaRoverCameraEntity.fromJson(Map<String, dynamic> json) {
     return NasaRoverCameraEntity(
-      id: json[idKey] as int?,
-      name: json[nameKey] as String?,
-      roverId: json[roverIdKey] as int?,
-      fullName: json[fullNameKey] as String?,
+      id: json[NasaRoverCameraModel.idKey] as int?,
+      name: json[NasaRoverCameraModel.nameKey] as String?,
+      roverId: json[NasaRoverCameraModel.roverIdKey] as int?,
+      fullName: json[NasaRoverCameraModel.fullNameKey] as String?,
     );
   }
-
-  static const idKey = 'id';
-  static const nameKey = 'name';
-  static const roverIdKey = 'rover_id';
-  static const fullNameKey = 'full_name';
 }

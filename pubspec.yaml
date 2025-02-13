@@ -58,8 +58,6 @@ dependencies:
   #* Used to display the date and time
   intl: ^0.20.2
   flutter_dotenv: ^5.2.1
-  #* Used to app default splash screen
-  flutter_native_splash: ^2.4.4
 
 dev_dependencies:
   flutter_test:
@@ -69,10 +67,14 @@ dev_dependencies:
   #~ Code Generation
   #* Used to generate code for auto_route
   build_runner: ^2.4.14
+  #* Used to generate code for hive
+  hive_generator: ^2.0.1
   #* Used to generate code for auto_route
   auto_route_generator: ^9.0.0
   #* Used to generate code for mobx
   mobx_codegen: ^2.7.0
+  #* Used to app default splash screen
+  flutter_native_splash: ^2.4.4
   #* Used to create the app icon
   flutter_launcher_icons: "^0.14.3"
 

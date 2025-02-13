@@ -17,6 +17,14 @@ class NasaRoverPhotoModel {
   final String? imgSrc;
   final String? earthDate;
   final NasaRoverModel? rover;
+
+  static const photosKey = 'photos';
+  static const idKey = 'id';
+  static const solKey = 'sol';
+  static const cameraKey = 'camera';
+  static const imgSrcKey = 'img_src';
+  static const earthDateKey = 'earth_date';
+  static const roverKey = 'rover';
 }
 
 final List<NasaRoverPhotoModel> dummyNasaRoverPhotoModels = List.generate(

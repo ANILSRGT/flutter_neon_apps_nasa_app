@@ -1,0 +1,24 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:neon_apps_nasa_app/core/enums/app_double_values.dart';
+import 'package:neon_apps_nasa_app/core/enums/app_themes_enum.dart';
+import 'package:neon_apps_nasa_app/core/extensions/padding_app_double_values_extension.dart';
+import 'package:neon_apps_nasa_app/core/extensions/radius_app_double_values_extension.dart';
+import 'package:neon_apps_nasa_app/core/extensions/sizedbox_app_double_values_extension.dart';
+import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
+import 'package:neon_apps_nasa_app/core/extensions/theme_mode_extension.dart';
+import 'package:neon_apps_nasa_app/core/providers/theme_notifier.dart';
+import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
+import 'package:neon_apps_nasa_app/presentation/widgets/sheets/option_bottom_sheet.dart';
+import 'package:neon_apps_nasa_app/presentation/widgets/text/header_text.dart';
+import 'package:neon_apps_nasa_app/presentation/widgets/text/title_text.dart';
+import 'package:provider/provider.dart';
+
+part 'settings_page.dart';
+part 'settings_page_view.dart';
+part 'widgets/settings_page_body.dart';
+part 'widgets/settings_page_appbar.dart';
+part 'widgets/settings_page_theme_header.dart';
+part 'widgets/settings_page_selector_item.dart';
+part 'widgets/settings_page_theme_selector.dart';
+part 'widgets/settings_page_theme_mode_selector.dart';

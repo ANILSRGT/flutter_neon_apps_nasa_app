@@ -11,17 +11,11 @@ class NasaRoverEntity extends NasaRoverModel {
 
   factory NasaRoverEntity.fromJson(Map<String, dynamic> json) {
     return NasaRoverEntity(
-      id: json[idKey] as int?,
-      name: json[nameKey] as String?,
-      landingDate: json[landingDateKey] as String?,
-      launchDate: json[launchDateKey] as String?,
-      status: json[statusKey] as String?,
+      id: json[NasaRoverModel.idKey] as int?,
+      name: json[NasaRoverModel.nameKey] as String?,
+      landingDate: json[NasaRoverModel.landingDateKey] as String?,
+      launchDate: json[NasaRoverModel.launchDateKey] as String?,
+      status: json[NasaRoverModel.statusKey] as String?,
     );
   }
-
-  static const idKey = 'id';
-  static const nameKey = 'name';
-  static const landingDateKey = 'landing_date';
-  static const launchDateKey = 'launch_date';
-  static const statusKey = 'status';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:neon_apps_nasa_app/core/cache/cache_manager.dart';
 import 'package:neon_apps_nasa_app/core/enums/app_themes_enum.dart';
 
 final class ThemeNotifier extends ChangeNotifier {
@@ -10,11 +11,13 @@ final class ThemeNotifier extends ChangeNotifier {
 
   void setTheme(AppThemesEnum theme) {
     _currentTheme = theme;
+    CacheManager.I.theme.saveTheme(theme);
     notifyListeners();
   }
 
   void setThemeMode(ThemeMode themeMode) {
     _currentThemeMode = themeMode;
+    CacheManager.I.theme.saveThemeMode(themeMode);
     notifyListeners();
   }
 }

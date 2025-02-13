@@ -15,5 +15,6 @@ import 'package:neon_apps_nasa_app/presentation/widgets/text/title_text.dart';
 
 part 'library_details_page.dart';
 part 'library_details_page_view.dart';
+part 'widgets/library_details_page_body.dart';
 part 'widgets/library_details_page_media.dart';
 part 'widgets/library_details_page_data_item.dart';

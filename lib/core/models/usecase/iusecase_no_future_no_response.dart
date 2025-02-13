@@ -1,3 +1,3 @@
-abstract interface class IUseCaseNoFutureNoResponse<T, Params> {
+abstract interface class IUseCaseNoFutureNoResponse<T> {
   T execute();
 }

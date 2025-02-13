@@ -8,6 +8,7 @@ import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_rover_photo_entity.da
 import 'package:neon_apps_nasa_app/data/query_keys/nasa/nasa_apod_query_keys.dart';
 import 'package:neon_apps_nasa_app/data/query_keys/nasa/nasa_library_query_keys.dart';
 import 'package:neon_apps_nasa_app/data/query_keys/nasa/nasa_rover_photos_query_keys.dart';
+import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_library_item_model.dart';
 import 'package:neon_apps_nasa_app/domains/params/nasa/apod/nasa_apod_by_date_params.dart';
 import 'package:neon_apps_nasa_app/domains/params/nasa/apod/nasa_apod_multiple_params.dart';
 import 'package:neon_apps_nasa_app/domains/params/nasa/library/nasa_library_get_params.dart';
@@ -179,10 +180,10 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
         );
       }
       final dataCollection =
-          data[NasaLibraryItemEntity.collectionKey] as Map<String, dynamic>?;
+          data[NasaLibraryItemModel.collectionKey] as Map<String, dynamic>?;
       if (dataCollection == null) return const ResponseModelSuccess(data: []);
       final dataItems =
-          dataCollection[NasaLibraryItemEntity.itemsKey] as List<dynamic>?;
+          dataCollection[NasaLibraryItemModel.itemsKey] as List<dynamic>?;
       if (dataItems == null || dataItems.isEmpty) {
         return const ResponseModelSuccess(data: []);
       }

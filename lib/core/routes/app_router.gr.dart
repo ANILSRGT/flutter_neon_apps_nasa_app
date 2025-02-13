@@ -13,7 +13,10 @@ part of 'app_router.dart';
 /// [ExplorePage]
 class ExploreRoute extends PageRouteInfo<void> {
   const ExploreRoute({List<PageRouteInfo>? children})
-    : super(ExploreRoute.name, initialChildren: children);
+      : super(
+          ExploreRoute.name,
+          initialChildren: children,
+        );
 
   static const String name = 'ExploreRoute';
 
@@ -29,7 +32,10 @@ class ExploreRoute extends PageRouteInfo<void> {
 /// [FavoritesPage]
 class FavoritesRoute extends PageRouteInfo<void> {
   const FavoritesRoute({List<PageRouteInfo>? children})
-    : super(FavoritesRoute.name, initialChildren: children);
+      : super(
+          FavoritesRoute.name,
+          initialChildren: children,
+        );
 
   static const String name = 'FavoritesRoute';
 
@@ -45,7 +51,10 @@ class FavoritesRoute extends PageRouteInfo<void> {
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
-    : super(HomeRoute.name, initialChildren: children);
+      : super(
+          HomeRoute.name,
+          initialChildren: children,
+        );
 
   static const String name = 'HomeRoute';
 
@@ -65,10 +74,13 @@ class LibraryDetailsRoute extends PageRouteInfo<LibraryDetailsRouteArgs> {
     Key? key,
     List<PageRouteInfo>? children,
   }) : super(
-         LibraryDetailsRoute.name,
-         args: LibraryDetailsRouteArgs(libraryItem: libraryItem, key: key),
-         initialChildren: children,
-       );
+          LibraryDetailsRoute.name,
+          args: LibraryDetailsRouteArgs(
+            libraryItem: libraryItem,
+            key: key,
+          ),
+          initialChildren: children,
+        );
 
   static const String name = 'LibraryDetailsRoute';
 
@@ -76,13 +88,19 @@ class LibraryDetailsRoute extends PageRouteInfo<LibraryDetailsRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<LibraryDetailsRouteArgs>();
-      return LibraryDetailsPage(libraryItem: args.libraryItem, key: args.key);
+      return LibraryDetailsPage(
+        libraryItem: args.libraryItem,
+        key: args.key,
+      );
     },
   );
 }
 
 class LibraryDetailsRouteArgs {
-  const LibraryDetailsRouteArgs({required this.libraryItem, this.key});
+  const LibraryDetailsRouteArgs({
+    required this.libraryItem,
+    this.key,
+  });
 
   final NasaLibraryItemModel libraryItem;
 
@@ -98,7 +116,10 @@ class LibraryDetailsRouteArgs {
 /// [MarsPage]
 class MarsRoute extends PageRouteInfo<void> {
   const MarsRoute({List<PageRouteInfo>? children})
-    : super(MarsRoute.name, initialChildren: children);
+      : super(
+          MarsRoute.name,
+          initialChildren: children,
+        );
 
   static const String name = 'MarsRoute';
 
@@ -111,10 +132,32 @@ class MarsRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [SettingsPage]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute({List<PageRouteInfo>? children})
+      : super(
+          SettingsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SettingsPage();
+    },
+  );
+}
+
+/// generated route for
 /// [SplashPage]
 class SplashRoute extends PageRouteInfo<void> {
   const SplashRoute({List<PageRouteInfo>? children})
-    : super(SplashRoute.name, initialChildren: children);
+      : super(
+          SplashRoute.name,
+          initialChildren: children,
+        );
 
   static const String name = 'SplashRoute';
 
