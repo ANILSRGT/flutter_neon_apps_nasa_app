@@ -11,6 +11,14 @@ class _HomePageFeaturedCarouselPageViewDots extends StatelessWidget {
           currentPage: _viewModel.featuredPageIndex,
           pageCount: dummyNasaApodEntities.length,
           onPageSelected: _viewModel.onFeaturedPageSelected,
+          selectedColor: context.extTheme.byBrightness(
+            light: context.appThemeExt.appColors.black.light.value,
+            dark: context.appThemeExt.appColors.white.light.value,
+          ),
+          unselectedColor: context.extTheme.byBrightness(
+            light: context.appThemeExt.appColors.grey.value,
+            dark: context.appThemeExt.appColors.grey.value,
+          ),
         );
       },
     );
