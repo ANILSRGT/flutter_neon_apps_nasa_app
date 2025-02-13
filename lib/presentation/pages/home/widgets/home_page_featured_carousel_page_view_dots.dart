@@ -9,7 +9,7 @@ class _HomePageFeaturedCarouselPageViewDots extends StatelessWidget {
       builder: (_) {
         return PageDots(
           currentPage: _viewModel.featuredPageIndex,
-          pageCount: 3,
+          pageCount: dummyNasaApodEntities.length,
           onPageSelected: _viewModel.onFeaturedPageSelected,
         );
       },

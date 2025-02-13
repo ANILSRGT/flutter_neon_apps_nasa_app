@@ -9,6 +9,7 @@ class SubtitleText extends StatelessWidget {
     this.textAlign,
     this.fontWeight,
     this.maxLines,
+    this.indent = 0,
   });
 
   final String title;
@@ -16,11 +17,12 @@ class SubtitleText extends StatelessWidget {
   final TextAlign? textAlign;
   final FontWeight? fontWeight;
   final int? maxLines;
+  final int indent;
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      title,
+      '${'\t' * indent}$title',
       textAlign: textAlign,
       maxLines: maxLines,
       overflow: maxLines != null ? TextOverflow.ellipsis : null,

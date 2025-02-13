@@ -20,7 +20,7 @@ class NasaLibraryItemDataEntity extends NasaLibraryItemDataModel {
           ? DateTime.parse(json[dateCreatedKey] as String).toLocal()
           : null,
       description: json[descriptionKey] as String?,
-      keywords: json[keywordsKey] as List<String>?,
+      keywords: (json[keywordsKey] as List?)?.map((e) => e as String).toList(),
       location: json[locationKey] as String?,
       mediaType: json[mediaTypeKey] as String?,
       nasaId: json[nasaIdKey] as String?,

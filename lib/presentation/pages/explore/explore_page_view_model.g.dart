@@ -16,6 +16,24 @@ mixin _$ExplorePageViewModel on _ExplorePageViewModelBase, Store {
       (_$isFilterVisibleComputed ??= Computed<bool>(() => super.isFilterVisible,
               name: '_ExplorePageViewModelBase.isFilterVisible'))
           .value;
+  Computed<NasaLibraryMediaTypes>? _$selectedMediaTypeComputed;
+
+  @override
+  NasaLibraryMediaTypes get selectedMediaType =>
+      (_$selectedMediaTypeComputed ??= Computed<NasaLibraryMediaTypes>(
+              () => super.selectedMediaType,
+              name: '_ExplorePageViewModelBase.selectedMediaType'))
+          .value;
+  Computed<ObservableFuture<List<NasaLibraryItemModel>?>>?
+      _$nasaLibraryFutureComputed;
+
+  @override
+  ObservableFuture<List<NasaLibraryItemModel>?> get nasaLibraryFuture =>
+      (_$nasaLibraryFutureComputed ??=
+              Computed<ObservableFuture<List<NasaLibraryItemModel>?>>(
+                  () => super.nasaLibraryFuture,
+                  name: '_ExplorePageViewModelBase.nasaLibraryFuture'))
+          .value;
 
   late final _$_isFilterVisibleAtom = Atom(
       name: '_ExplorePageViewModelBase._isFilterVisible', context: context);
@@ -33,6 +51,48 @@ mixin _$ExplorePageViewModel on _ExplorePageViewModelBase, Store {
     });
   }
 
+  late final _$_selectedMediaTypeAtom = Atom(
+      name: '_ExplorePageViewModelBase._selectedMediaType', context: context);
+
+  @override
+  NasaLibraryMediaTypes get _selectedMediaType {
+    _$_selectedMediaTypeAtom.reportRead();
+    return super._selectedMediaType;
+  }
+
+  @override
+  set _selectedMediaType(NasaLibraryMediaTypes value) {
+    _$_selectedMediaTypeAtom.reportWrite(value, super._selectedMediaType, () {
+      super._selectedMediaType = value;
+    });
+  }
+
+  late final _$_nasaLibraryFutureAtom = Atom(
+      name: '_ExplorePageViewModelBase._nasaLibraryFuture', context: context);
+
+  @override
+  ObservableFuture<List<NasaLibraryItemModel>?> get _nasaLibraryFuture {
+    _$_nasaLibraryFutureAtom.reportRead();
+    return super._nasaLibraryFuture;
+  }
+
+  @override
+  set _nasaLibraryFuture(ObservableFuture<List<NasaLibraryItemModel>?> value) {
+    _$_nasaLibraryFutureAtom.reportWrite(value, super._nasaLibraryFuture, () {
+      super._nasaLibraryFuture = value;
+    });
+  }
+
+  late final _$fetchNasaLibraryItemsAsyncAction = AsyncAction(
+      '_ExplorePageViewModelBase.fetchNasaLibraryItems',
+      context: context);
+
+  @override
+  Future<void> fetchNasaLibraryItems() {
+    return _$fetchNasaLibraryItemsAsyncAction
+        .run(() => super.fetchNasaLibraryItems());
+  }
+
   late final _$_ExplorePageViewModelBaseActionController =
       ActionController(name: '_ExplorePageViewModelBase', context: context);
 
@@ -48,9 +108,33 @@ mixin _$ExplorePageViewModel on _ExplorePageViewModelBase, Store {
   }
 
   @override
+  void setSelectedMediaType(NasaLibraryMediaTypes mediaType) {
+    final _$actionInfo = _$_ExplorePageViewModelBaseActionController
+        .startAction(name: '_ExplorePageViewModelBase.setSelectedMediaType');
+    try {
+      return super.setSelectedMediaType(mediaType);
+    } finally {
+      _$_ExplorePageViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void clearFilters() {
+    final _$actionInfo = _$_ExplorePageViewModelBaseActionController
+        .startAction(name: '_ExplorePageViewModelBase.clearFilters');
+    try {
+      return super.clearFilters();
+    } finally {
+      _$_ExplorePageViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-isFilterVisible: ${isFilterVisible}
+isFilterVisible: ${isFilterVisible},
+selectedMediaType: ${selectedMediaType},
+nasaLibraryFuture: ${nasaLibraryFuture}
     ''';
   }
 }

@@ -1,7 +1,7 @@
 import 'package:neon_apps_nasa_app/core/models/response/response_model.dart';
 import 'package:neon_apps_nasa_app/data/datasources/nasa/nasa_remote_source.dart';
 import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_apod_entity.dart';
-import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_library_entity.dart';
+import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_library_item_entity.dart';
 import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_rover_photo_entity.dart';
 import 'package:neon_apps_nasa_app/domains/params/nasa/apod/nasa_apod_by_date_params.dart';
 import 'package:neon_apps_nasa_app/domains/params/nasa/apod/nasa_apod_multiple_params.dart';
@@ -38,7 +38,7 @@ class NasaRepoImpl extends NasaRepo {
   }
 
   @override
-  Future<ResponseModel<NasaLibraryEntity>> getNasaLibrary(
+  Future<ResponseModel<List<NasaLibraryItemEntity>>> getNasaLibrary(
     NasaLibraryGetParams params,
   ) async {
     return Injection.I.read<NasaRemoteSource>().getNasaLibrary(params);

@@ -33,7 +33,7 @@ class NasaApodEntity extends NasaApodModel {
 }
 
 List<NasaApodEntity> dummyNasaApodEntities = List.generate(
-  10,
+  5,
   (index) {
     final date = DateTime.now().toUtc().subtract(Duration(days: index));
     return NasaApodEntity.fromJson({

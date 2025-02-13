@@ -27,12 +27,7 @@ final class _NasaInjection {
     );
 
     final nasaLibraryDio = Dio(
-      BaseOptions(
-        baseUrl: 'https://images-api.nasa.gov/search',
-        queryParameters: {
-          'api_key': nasaApiKey,
-        },
-      ),
+      BaseOptions(baseUrl: 'https://images-api.nasa.gov/search'),
     );
 
     _sl

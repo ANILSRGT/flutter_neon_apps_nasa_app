@@ -3,7 +3,7 @@ import 'package:neon_apps_nasa_app/core/models/error/error_model.dart';
 import 'package:neon_apps_nasa_app/core/models/response/response_model.dart';
 import 'package:neon_apps_nasa_app/data/datasources/nasa/nasa_remote_source.dart';
 import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_apod_entity.dart';
-import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_library_entity.dart';
+import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_library_item_entity.dart';
 import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_rover_photo_entity.dart';
 import 'package:neon_apps_nasa_app/data/query_keys/nasa/nasa_apod_query_keys.dart';
 import 'package:neon_apps_nasa_app/data/query_keys/nasa/nasa_library_query_keys.dart';
@@ -18,9 +18,9 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
     required Dio nasaApodDio,
     required Dio nasaRoverDio,
     required Dio nasaLibraryDio,
-  })  : _nasaApodDio = nasaApodDio,
-        _nasaRoverDio = nasaRoverDio,
-        _nasaLibraryDio = nasaLibraryDio;
+  }) : _nasaApodDio = nasaApodDio,
+       _nasaRoverDio = nasaRoverDio,
+       _nasaLibraryDio = nasaLibraryDio;
 
   final Dio _nasaApodDio;
   final Dio _nasaRoverDio;
@@ -59,9 +59,7 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
     try {
       final response = await _nasaApodDio.get<Map<String, dynamic>>(
         '/',
-        queryParameters: {
-          NasaApodQueryKeys.date: params.date,
-        },
+        queryParameters: {NasaApodQueryKeys.date: params.date},
       );
       final data = response.data;
       if (data == null) {
@@ -129,9 +127,7 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
     try {
       final response = await _nasaRoverDio.get<Map<String, dynamic>>(
         '/${params.roverType.name}/photos',
-        queryParameters: {
-          NasaRoverPhotosQueryKeys.earthDate: params.earthDate,
-        },
+        queryParameters: {NasaRoverPhotosQueryKeys.earthDate: params.earthDate},
       );
       final data = response.data;
       if (data == null) {
@@ -156,12 +152,12 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
   }
 
   @override
-  Future<ResponseModel<NasaLibraryEntity>> getNasaLibrary(
+  Future<ResponseModel<List<NasaLibraryItemEntity>>> getNasaLibrary(
     NasaLibraryGetParams params,
   ) async {
     try {
       final response = await _nasaLibraryDio.get<Map<String, dynamic>>(
-        '/',
+        '',
         queryParameters: {
           NasaLibraryQueryKeys.query: params.query,
           if (params.mediaType != null)
@@ -182,7 +178,21 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
           ),
         );
       }
-      final entity = NasaLibraryEntity.fromJson(data);
+      final dataCollection =
+          data[NasaLibraryItemEntity.collectionKey] as Map<String, dynamic>?;
+      if (dataCollection == null) return const ResponseModelSuccess(data: []);
+      final dataItems =
+          dataCollection[NasaLibraryItemEntity.itemsKey] as List<dynamic>?;
+      if (dataItems == null || dataItems.isEmpty) {
+        return const ResponseModelSuccess(data: []);
+      }
+      final entity = await NasaLibraryItemEntity.fromJsonList(
+        jsonList: dataItems,
+        libraryCollectionCallback: (href) async {
+          final collectionRes = await Dio().get<List<dynamic>>(href);
+          return collectionRes.data?.map((e) => e as String).toList();
+        },
+      );
       return ResponseModelSuccess(data: entity);
     } on Exception catch (e) {
       return ResponseModelFail(
