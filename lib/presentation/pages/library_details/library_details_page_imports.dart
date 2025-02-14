@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:neon_apps_nasa_app/core/enums/app_double_values.dart';
 import 'package:neon_apps_nasa_app/core/extensions/padding_app_double_values_extension.dart';
 import 'package:neon_apps_nasa_app/core/extensions/sizedbox_app_double_values_extension.dart';
+import 'package:neon_apps_nasa_app/core/providers/nasa_favorite_library_notifier.dart';
 import 'package:neon_apps_nasa_app/domains/enums/nasa_library_media_types.dart';
 import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_library_item_data_model.dart';
 import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_library_item_model.dart';
@@ -12,6 +13,7 @@ import 'package:neon_apps_nasa_app/presentation/widgets/players/video_player_wid
 import 'package:neon_apps_nasa_app/presentation/widgets/text/label_text.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/text/subtitle_text.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/text/title_text.dart';
+import 'package:provider/provider.dart';
 
 part 'library_details_page.dart';
 part 'library_details_page_view.dart';

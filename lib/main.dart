@@ -4,8 +4,10 @@ import 'package:neon_apps_nasa_app/core/cache/cache_manager.dart';
 import 'package:neon_apps_nasa_app/core/configs/app_env.dart';
 import 'package:neon_apps_nasa_app/core/enums/app_double_values.dart';
 import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
+import 'package:neon_apps_nasa_app/core/providers/nasa_favorite_library_notifier.dart';
 import 'package:neon_apps_nasa_app/core/providers/theme_notifier.dart';
 import 'package:neon_apps_nasa_app/core/routes/app_router.dart';
+import 'package:neon_apps_nasa_app/core/routes/observers/custom_route_observer.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
 import 'package:neon_apps_nasa_app/injections/injection_imports.dart';
 import 'package:oktoast/oktoast.dart';
@@ -20,7 +22,7 @@ Future<void> main() async {
   await CacheManager.I.init();
 
   final themeCache = CacheManager.I.theme.getTheme();
-  final themeModeCache = CacheManager.I.theme.getThemeMode();
+  final themeModeCache = CacheManager.I.themeMode.getThemeMode();
 
   Injection.I.init();
 
@@ -34,6 +36,7 @@ Future<void> main() async {
               ..setThemeMode(themeModeCache);
           },
         ),
+        ChangeNotifierProvider(create: (_) => NasaFavoriteLibraryNotifier()),
       ],
       child: MainApp(),
     ),
@@ -71,7 +74,10 @@ class MainApp extends StatelessWidget {
           ),
         );
       },
-      routerConfig: _appRouter.config(),
+      routerDelegate: _appRouter.delegate(
+        navigatorObservers: () => [CustomRouteObserver()],
+      ),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }

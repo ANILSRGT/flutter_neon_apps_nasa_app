@@ -45,7 +45,10 @@ class _CustomInputFieldState extends State<CustomInputField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onTapOutside: (_) => FocusScope.of(context).unfocus(),
+      onTapOutside: (_) {
+        widget.focusNode?.unfocus();
+        FocusScope.of(context).unfocus();
+      },
       controller: widget.controller,
       keyboardType: widget.keyboardType,
       obscureText: widget.obscureText,
@@ -67,17 +70,19 @@ class _CustomInputFieldState extends State<CustomInputField> {
         border: OutlineInputBorder(
           borderRadius: AppDoubleValues.md.extRadius.border.all,
           borderSide: BorderSide(
-            color: context.appThemeExt.appColors.black
-                .byBrightness(context.extTheme.isDark)
-                .value,
+            color:
+                context.appThemeExt.appColors.black
+                    .byBrightness(context.extTheme.isDark)
+                    .value,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: AppDoubleValues.md.extRadius.border.all,
           borderSide: BorderSide(
-            color: context.appThemeExt.appColors.error
-                .byBrightness(context.extTheme.isDark)
-                .value,
+            color:
+                context.appThemeExt.appColors.error
+                    .byBrightness(context.extTheme.isDark)
+                    .value,
           ),
         ),
         focusedBorder: OutlineInputBorder(
@@ -89,9 +94,10 @@ class _CustomInputFieldState extends State<CustomInputField> {
         enabledBorder: OutlineInputBorder(
           borderRadius: AppDoubleValues.md.extRadius.border.all,
           borderSide: BorderSide(
-            color: context.appThemeExt.appColors.black
-                .byBrightness(context.extTheme.isDark)
-                .value,
+            color:
+                context.appThemeExt.appColors.black
+                    .byBrightness(context.extTheme.isDark)
+                    .value,
           ),
         ),
         disabledBorder: OutlineInputBorder(
@@ -103,9 +109,10 @@ class _CustomInputFieldState extends State<CustomInputField> {
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: AppDoubleValues.md.extRadius.border.all,
           borderSide: BorderSide(
-            color: context.appThemeExt.appColors.error
-                .byBrightness(context.extTheme.isDark)
-                .value,
+            color:
+                context.appThemeExt.appColors.error
+                    .byBrightness(context.extTheme.isDark)
+                    .value,
           ),
         ),
       ),

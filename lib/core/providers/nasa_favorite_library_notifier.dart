@@ -18,7 +18,6 @@ final class NasaFavoriteLibraryNotifier extends ChangeNotifier {
 
   Future<void> toggleFavorite(NasaLibraryItemModel model) async {
     await Injection.I.read<NasaLibraryToggleFavoriteUseCase>().execute(model);
-    _favorites.add(model);
-    notifyListeners();
+    loadFavorites();
   }
 }

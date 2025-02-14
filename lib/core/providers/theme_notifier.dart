@@ -17,7 +17,7 @@ final class ThemeNotifier extends ChangeNotifier {
 
   void setThemeMode(ThemeMode themeMode) {
     _currentThemeMode = themeMode;
-    CacheManager.I.theme.saveThemeMode(themeMode);
+    CacheManager.I.themeMode.saveThemeMode(themeMode);
     notifyListeners();
   }
 }

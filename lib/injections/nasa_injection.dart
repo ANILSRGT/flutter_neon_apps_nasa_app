@@ -11,18 +11,14 @@ final class _NasaInjection {
     final nasaApodDio = Dio(
       BaseOptions(
         baseUrl: 'https://api.nasa.gov/planetary/apod',
-        queryParameters: {
-          'api_key': nasaApiKey,
-        },
+        queryParameters: {'api_key': nasaApiKey},
       ),
     );
 
     final nasaRoverDio = Dio(
       BaseOptions(
         baseUrl: 'https://api.nasa.gov/mars-photos/api/v1/rovers',
-        queryParameters: {
-          'api_key': nasaApiKey,
-        },
+        queryParameters: {'api_key': nasaApiKey},
       ),
     );
 
@@ -38,11 +34,14 @@ final class _NasaInjection {
           nasaLibraryDio: nasaLibraryDio,
         ),
       )
+      ..registerLazySingleton<NasaLocalSource>(NasaLocalSourceImpl.new)
       ..registerLazySingleton<NasaRepo>(NasaRepoImpl.new)
       ..registerFactory(NasaApodGetUsecase.new)
       ..registerFactory(NasaApodByDateUsecase.new)
       ..registerFactory(NasaApodMultipleUsecase.new)
       ..registerFactory(NasaRoverPhotosGetUsecase.new)
-      ..registerFactory(NasaLibraryGetUsecase.new);
+      ..registerFactory(NasaLibraryGetUsecase.new)
+      ..registerFactory(NasaLibraryGetFavoritesUseCase.new)
+      ..registerFactory(NasaLibraryToggleFavoriteUseCase.new);
   }
 }

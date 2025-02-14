@@ -1,27 +1,24 @@
 part of 'cache_manager.dart';
 
 final class _CacheManagerTheme {
-  const _CacheManagerTheme(this._box);
+  _CacheManagerTheme._init();
+  static final _CacheManagerTheme _instance = _CacheManagerTheme._init();
+  static _CacheManagerTheme get I => _instance;
 
-  final Box<dynamic> _box;
+  static const _boxName = 'theme';
 
-  Future<void> saveThemeMode(ThemeMode themeMode) async {
-    await _box.put('themeMode', themeMode.index);
-  }
+  late final Box<int> _box;
 
-  ThemeMode getThemeMode() {
-    final themeModeIndex = _box.get('themeMode') as int?;
-    return themeModeIndex != null
-        ? ThemeMode.values[themeModeIndex]
-        : ThemeMode.system;
+  Future<void> initial() async {
+    _box = await Hive.openBox<int>(_boxName);
   }
 
   Future<void> saveTheme(AppThemesEnum theme) async {
-    await _box.put('theme', theme.index);
+    await _box.put(AppCacheKeys.theme.key, theme.index);
   }
 
   AppThemesEnum getTheme() {
-    final themeIndex = _box.get('theme') as int?;
+    final themeIndex = _box.get(AppCacheKeys.theme.key);
     return themeIndex != null
         ? AppThemesEnum.values[themeIndex]
         : AppThemesEnum.main;

@@ -23,7 +23,10 @@ class _LibraryDetailsPageBody extends StatelessWidget {
                     if (context.router.canPop()) const BackButton(),
                     const Spacer(),
                     IconButton(
-                      onPressed: () {},
+                      onPressed:
+                          () => context
+                              .read<NasaFavoriteLibraryNotifier>()
+                              .toggleFavorite(libraryItem),
                       icon: const Icon(Icons.favorite_rounded),
                     ),
                   ],
