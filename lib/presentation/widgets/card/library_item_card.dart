@@ -34,12 +34,9 @@ class LibraryItemCard extends StatelessWidget {
               Expanded(
                 child: ClipRRect(
                   borderRadius: AppDoubleValues.lg.extRadius.border.all,
-                  child: Hero(
-                    tag: model.data?.nasaId ?? '',
-                    child: CustomCachedNetworkImage(
-                      imageUrl: model.thumbnailUrl ?? '',
-                      fit: BoxFit.cover,
-                    ),
+                  child: CustomCachedNetworkImage(
+                    imageUrl: model.thumbnailUrl ?? '',
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),

@@ -15,14 +15,11 @@ class _LibraryDetailsPageMedia extends StatelessWidget {
               (e) => e.endsWith('small.mp4') || e.contains('youtube.com'),
             ),
           ),
-          NasaMediaTypes.image => Hero(
-            tag: libraryItem.data?.nasaId ?? '',
-            child: CustomCachedNetworkImage(
-              imageUrl: libraryItem.libraryCollection!.firstWhere(
-                (e) => e.endsWith('small.jpg'),
-              ),
-              fit: BoxFit.cover,
+          NasaMediaTypes.image => CustomCachedNetworkImage(
+            imageUrl: libraryItem.libraryCollection!.firstWhere(
+              (e) => e.endsWith('small.jpg'),
             ),
+            fit: BoxFit.cover,
           ),
           _ => const SizedBox.shrink(),
         };

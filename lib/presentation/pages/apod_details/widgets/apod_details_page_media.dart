@@ -15,13 +15,7 @@ class _ApodDetailsPageMedia extends StatelessWidget {
             ? mediaType == NasaMediaTypes.video
                 ? VideoPlayerWidget(videoUrl: link)
                 : mediaType == NasaMediaTypes.image
-                ? Hero(
-                  tag: apod.url ?? '',
-                  child: CustomCachedNetworkImage(
-                    imageUrl: link,
-                    fit: BoxFit.cover,
-                  ),
-                )
+                ? CustomCachedNetworkImage(imageUrl: link, fit: BoxFit.cover)
                 : const SizedBox.shrink()
             : const SizedBox.shrink();
       },

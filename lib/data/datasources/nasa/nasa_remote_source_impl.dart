@@ -178,6 +178,8 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
             NasaLibraryQueryKeys.yearStart: params.yearStart,
           if (params.yearEnd != null)
             NasaLibraryQueryKeys.yearEnd: params.yearEnd,
+          if (params.pageSize != null)
+            NasaLibraryQueryKeys.pageSize: params.pageSize,
         },
       );
       final data = response.data;

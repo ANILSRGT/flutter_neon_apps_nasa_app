@@ -6,10 +6,12 @@ class NasaLibraryGetParams {
     this.mediaType,
     this.yearStart,
     this.yearEnd,
+    this.pageSize,
   });
 
   final String query;
   final NasaMediaTypes? mediaType;
   final int? yearStart;
   final int? yearEnd;
+  final int? pageSize;
 }

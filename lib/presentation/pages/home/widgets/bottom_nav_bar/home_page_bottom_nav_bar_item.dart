@@ -1,10 +1,7 @@
-part of '../home_page_imports.dart';
+part of '../../home_page_imports.dart';
 
 class _HomePageBottomNavBarItem extends StatelessWidget {
-  const _HomePageBottomNavBarItem({
-    required this.tab,
-    required this.icon,
-  });
+  const _HomePageBottomNavBarItem({required this.tab, required this.icon});
 
   final HomePageTabs tab;
   final Widget icon;
@@ -15,9 +12,9 @@ class _HomePageBottomNavBarItem extends StatelessWidget {
             .byBrightness(context.extTheme.isDark)
             .value
         : context.extTheme.byBrightness(
-            light: context.appThemeExt.appColors.grey.value,
-            dark: context.appThemeExt.appColors.darkGrey.value,
-          );
+          light: context.appThemeExt.appColors.grey.value,
+          dark: context.appThemeExt.appColors.darkGrey.value,
+        );
   }
 
   Color _iconColor(BuildContext context) {

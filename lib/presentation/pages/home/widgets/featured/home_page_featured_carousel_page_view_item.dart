@@ -1,4 +1,4 @@
-part of '../home_page_imports.dart';
+part of '../../home_page_imports.dart';
 
 class _HomePageFeaturedCarouselPageViewItem extends StatelessWidget {
   const _HomePageFeaturedCarouselPageViewItem({required this.model});
@@ -14,12 +14,9 @@ class _HomePageFeaturedCarouselPageViewItem extends StatelessWidget {
             title: model!.title ?? '',
             background:
                 model?.mediaType == 'image'
-                    ? Hero(
-                      tag: model!.url ?? '',
-                      child: CustomCachedNetworkImage(
-                        imageUrl: model!.url ?? '',
-                        fit: BoxFit.cover,
-                      ),
+                    ? CustomCachedNetworkImage(
+                      imageUrl: model!.url ?? '',
+                      fit: BoxFit.cover,
                     )
                     : VideoPlayerThumbnailWidget(videoUrl: model!.url ?? ''),
           ),

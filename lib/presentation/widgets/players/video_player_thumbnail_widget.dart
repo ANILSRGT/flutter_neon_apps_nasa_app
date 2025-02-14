@@ -1,10 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:get_thumbnail_video/video_thumbnail.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/app/app_indicator.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/image/custom_cached_network_image.dart';
-import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class _ThumbnailRes {

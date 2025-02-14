@@ -1,4 +1,4 @@
-part of '../home_page_imports.dart';
+part of '../../home_page_imports.dart';
 
 class _HomePageFeaturedCarouselPageView extends StatelessWidget {
   const _HomePageFeaturedCarouselPageView();

@@ -1,4 +1,4 @@
-part of '../home_page_imports.dart';
+part of '../../home_page_imports.dart';
 
 class _HomePageBottomNavBar extends StatelessWidget {
   const _HomePageBottomNavBar();
@@ -9,9 +9,10 @@ class _HomePageBottomNavBar extends StatelessWidget {
       margin: AppDoubleValues.xl.extPadding.all,
       padding: AppDoubleValues.sm.extPadding.all,
       decoration: BoxDecoration(
-        color: context.appThemeExt.appColors.background
-            .byBrightness(context.extTheme.isDark)
-            .onColor,
+        color:
+            context.appThemeExt.appColors.background
+                .byBrightness(context.extTheme.isDark)
+                .onColor,
         borderRadius: AppDoubleValues.xl.extRadius.border.all,
       ),
       child: Row(

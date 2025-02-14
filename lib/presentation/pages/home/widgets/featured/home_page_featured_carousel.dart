@@ -1,4 +1,4 @@
-part of '../home_page_imports.dart';
+part of '../../home_page_imports.dart';
 
 class _HomePageFeaturedCarousel extends StatefulWidget {
   const _HomePageFeaturedCarousel();
@@ -22,7 +22,7 @@ class _HomePageFeaturedCarouselState extends State<_HomePageFeaturedCarousel> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const _HomePageFeaturedTitle(),
+          const _HomePageFeaturedHeader(),
           AppDoubleValues.md.extSizedbox.height,
           const Expanded(child: _HomePageFeaturedCarouselPageView()),
           AppDoubleValues.md.extSizedbox.height,
