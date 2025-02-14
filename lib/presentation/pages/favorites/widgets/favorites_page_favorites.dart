@@ -9,8 +9,6 @@ class _FavoritesPageFavorites extends StatelessWidget {
     return LayoutBuilder(
       builder: (_, cst) {
         return GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
           itemCount: favorites.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: cst.maxWidth ~/ 180,

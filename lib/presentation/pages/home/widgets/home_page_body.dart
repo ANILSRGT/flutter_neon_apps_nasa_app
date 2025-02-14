@@ -24,7 +24,14 @@ class _HomePageBodyState extends State<_HomePageBody>
             AppDoubleValues.xl.extSizedbox.height,
             const SizedBox(height: 300, child: _HomePageFeaturedCarousel()),
             AppDoubleValues.xl.extSizedbox.height,
-            const _HomePageMarsLibrary(),
+            ...HomePageLibraries.values
+                .map((e) => _HomePageLibrary(library: e))
+                .expand(
+                  (element) => [element, AppDoubleValues.xl.extSizedbox.height],
+                )
+                .toList()
+              ..removeLast(),
+            const SizedBox(height: 90),
           ],
         ),
       ),

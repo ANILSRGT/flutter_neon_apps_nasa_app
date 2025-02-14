@@ -1,17 +1,19 @@
 part of '../../home_page_imports.dart';
 
-class _HomePageMarsLibrary extends StatefulWidget {
-  const _HomePageMarsLibrary();
+class _HomePageLibrary extends StatefulWidget {
+  const _HomePageLibrary({required this.library});
+
+  final HomePageLibraries library;
 
   @override
-  State<_HomePageMarsLibrary> createState() => _HomePageMarsLibraryState();
+  State<_HomePageLibrary> createState() => _HomePageLibraryState();
 }
 
-class _HomePageMarsLibraryState extends State<_HomePageMarsLibrary> {
+class _HomePageLibraryState extends State<_HomePageLibrary> {
   @override
   void initState() {
     super.initState();
-    _viewModel.fetchMarsLibraryList();
+    _viewModel.fetchLibraryList(widget.library);
   }
 
   @override
@@ -21,9 +23,9 @@ class _HomePageMarsLibraryState extends State<_HomePageMarsLibrary> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const _HomePageMarsLibraryHeader(),
+          _HomePageLibraryHeader(title: widget.library.title),
           AppDoubleValues.md.extSizedbox.height,
-          const _HomePageMarsLibraryItems(),
+          _HomePageLibraryItems(library: widget.library),
         ],
       ),
     );

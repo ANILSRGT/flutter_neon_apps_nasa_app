@@ -69,7 +69,7 @@ abstract class _ExplorePageViewModelBase with Store {
             NasaLibraryGetParams(
               query: searchController.text,
               mediaType: _selectedMediaType,
-              pageSize: 30,
+              pageSize: 20,
               yearStart: int.tryParse(yearFromController.text),
               yearEnd: int.tryParse(yearToController.text),
             ),

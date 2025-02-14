@@ -1,7 +1,9 @@
 part of '../../home_page_imports.dart';
 
-class _HomePageMarsLibraryItems extends StatelessWidget {
-  const _HomePageMarsLibraryItems();
+class _HomePageLibraryItems extends StatelessWidget {
+  const _HomePageLibraryItems({required this.library});
+
+  final HomePageLibraries library;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +13,7 @@ class _HomePageMarsLibraryItems extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children:
-                (_viewModel.marsLibraryList.status == FutureStatus.pending
+                (_viewModel.libraryList[library]!.status == FutureStatus.pending
                         ? List.generate(
                           3,
                           (_) => SizedBox.square(
@@ -32,15 +34,18 @@ class _HomePageMarsLibraryItems extends StatelessWidget {
                             ),
                           ),
                         )
-                        : _viewModel.marsLibraryList.value == null
+                        : _viewModel.libraryList[library]!.value == null
                         ? [const Text('No data')]
                         : List.generate(
-                          _viewModel.marsLibraryList.value!.length,
+                          _viewModel.libraryList[library]!.value!.length,
                           (index) {
                             return SizedBox.square(
                               dimension: 160,
                               child: LibraryItemCard(
-                                model: _viewModel.marsLibraryList.value![index],
+                                model:
+                                    _viewModel
+                                        .libraryList[library]!
+                                        .value![index],
                               ),
                             );
                           },

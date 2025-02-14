@@ -6,6 +6,7 @@ import 'package:neon_apps_nasa_app/domains/params/nasa/apod/nasa_apod_multiple_p
 import 'package:neon_apps_nasa_app/domains/params/nasa/library/nasa_library_get_params.dart';
 import 'package:neon_apps_nasa_app/domains/repositories/nasa/nasa_repo.dart';
 import 'package:neon_apps_nasa_app/injections/injection_imports.dart';
+import 'package:neon_apps_nasa_app/presentation/pages/home/enums/home_page_libraries.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/home/home_page_imports.dart';
 
 part 'home_page_view_model.g.dart';
@@ -27,8 +28,11 @@ abstract class _HomePageViewModelBase with Store {
       ObservableFuture.value(null);
 
   @observable
-  ObservableFuture<List<NasaLibraryItemModel>?> _marsLibraryList =
-      ObservableFuture.value(null);
+  final Map<HomePageLibraries, ObservableFuture<List<NasaLibraryItemModel>?>>
+  _libraryList = {
+    for (var library in HomePageLibraries.values)
+      library: ObservableFuture.value(null),
+  };
 
   @computed
   int get featuredPageIndex => _featuredPageIndex;
@@ -41,8 +45,8 @@ abstract class _HomePageViewModelBase with Store {
       _featuredApodList;
 
   @computed
-  ObservableFuture<List<NasaLibraryItemModel>?> get marsLibraryList =>
-      _marsLibraryList;
+  Map<HomePageLibraries, ObservableFuture<List<NasaLibraryItemModel>?>>
+  get libraryList => _libraryList;
 
   @action
   void setFeaturedPageIndex(int index) {
@@ -89,13 +93,13 @@ abstract class _HomePageViewModelBase with Store {
   }
 
   @action
-  void fetchMarsLibraryList() {
-    _marsLibraryList = ObservableFuture(
+  void fetchLibraryList(HomePageLibraries library) {
+    _libraryList[library] = ObservableFuture(
       Injection.I
           .read<NasaRepo>()
           .getNasaLibrary(
             NasaLibraryGetParams(
-              query: 'mars',
+              query: library.query,
               yearStart: DateTime.now().year,
               pageSize: 10,
             ),
