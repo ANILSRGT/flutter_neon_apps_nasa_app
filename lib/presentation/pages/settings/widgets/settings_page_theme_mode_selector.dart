@@ -7,7 +7,7 @@ class _SettingsPageThemeModeSelector extends StatelessWidget {
     final themeMode = await OptionBottomSheet.show<ThemeMode>(
       context: context,
       config: OptionBottomSheetConfig(
-        title: 'Select Theme',
+        title: 'Theme Mode',
         options:
             ThemeMode.values.map((e) {
               return OptionBottomSheetOption(
@@ -25,9 +25,10 @@ class _SettingsPageThemeModeSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _SettingsPageSelectorItem(
+      icon: const Icon(Icons.brightness_4_outlined),
       title: 'Theme Mode:',
       onTap: () => _onThemeModeTap(context),
-      value: TitleText(
+      value: SubtitleText(
         title:
             context.watch<ThemeNotifier>().currentThemeMode.extMode.displayName,
         fontWeight: FontWeight.w400,

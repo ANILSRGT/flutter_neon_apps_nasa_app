@@ -6,7 +6,7 @@ class _SettingsPageAppbar extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return AppBar();
+    return AppBar(title: const Text('Settings'), centerTitle: true);
   }
 
   @override

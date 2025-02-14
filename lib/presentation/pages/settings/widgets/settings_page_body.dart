@@ -12,11 +12,7 @@ class _SettingsPageBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AppDoubleValues.lg.extSizedbox.height,
-            const _SettingsPageThemeHeader(),
-            AppDoubleValues.sm.extSizedbox.height,
-            const _SettingsPageThemeSelector(),
-            AppDoubleValues.md.extSizedbox.height,
-            const _SettingsPageThemeModeSelector(),
+            const _SettingsPageThemeSettings(),
             AppDoubleValues.lg.extSizedbox.height,
           ],
         ),

@@ -7,7 +7,7 @@ class _SettingsPageThemeSelector extends StatelessWidget {
     final theme = await OptionBottomSheet.show<AppThemesEnum>(
       context: context,
       config: OptionBottomSheetConfig(
-        title: 'Select Theme',
+        title: 'Theme',
         options:
             AppThemesEnum.values.map((e) {
               return OptionBottomSheetOption(value: e, label: e.displayName);
@@ -22,9 +22,10 @@ class _SettingsPageThemeSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _SettingsPageSelectorItem(
+      icon: const Icon(Icons.color_lens_outlined),
       title: 'Theme:',
       onTap: () => _onThemeTap(context),
-      value: TitleText(
+      value: SubtitleText(
         title: context.watch<ThemeNotifier>().currentTheme.displayName,
         fontWeight: FontWeight.w400,
       ),
