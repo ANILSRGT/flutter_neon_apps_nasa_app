@@ -9,6 +9,10 @@ final class NasaFavoriteLibraryNotifier extends ChangeNotifier {
 
   List<NasaLibraryItemModel> get favorites => _favorites;
 
+  bool isFavorite(String nasaId) {
+    return _favorites.any((e) => e.data?.nasaId == nasaId);
+  }
+
   void loadFavorites() {
     _favorites.clear();
     final favs = Injection.I.read<NasaLibraryGetFavoritesUseCase>().execute();

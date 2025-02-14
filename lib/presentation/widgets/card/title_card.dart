@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:neon_apps_nasa_app/core/enums/app_double_values.dart';
 import 'package:neon_apps_nasa_app/core/extensions/padding_app_double_values_extension.dart';
+import 'package:neon_apps_nasa_app/core/extensions/radius_app_double_values_extension.dart';
 import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
 
 class TitleCard extends StatelessWidget {
-  const TitleCard({
-    required this.title,
-    required this.background,
-    super.key,
-  });
+  const TitleCard({required this.title, required this.background, super.key});
+
+  factory TitleCard.noData() => TitleCard(
+    title: '',
+    background: ColoredBox(
+      color: Colors.grey,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Icon(
+          Icons.photo_library_outlined,
+          color: Colors.grey.shade300,
+          size: 42,
+        ),
+      ),
+    ),
+  );
 
   final String title;
   final Widget background;
@@ -17,14 +29,15 @@ class TitleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(AppDoubleValues.lg.value),
+      borderRadius: AppDoubleValues.lg.extRadius.border.all,
       child: Stack(
         children: [
           Positioned.fill(
             child: ColorFiltered(
               colorFilter: ColorFilter.mode(
-                context.appThemeExt.appColors.black.light.value
-                    .withValues(alpha: 0.25),
+                context.appThemeExt.appColors.black.light.value.withValues(
+                  alpha: 0.25,
+                ),
                 BlendMode.darken,
               ),
               child: background,

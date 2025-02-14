@@ -16,14 +16,13 @@ mixin _$ExplorePageViewModel on _ExplorePageViewModelBase, Store {
       (_$isFilterVisibleComputed ??= Computed<bool>(() => super.isFilterVisible,
               name: '_ExplorePageViewModelBase.isFilterVisible'))
           .value;
-  Computed<NasaLibraryMediaTypes>? _$selectedMediaTypeComputed;
+  Computed<NasaMediaTypes>? _$selectedMediaTypeComputed;
 
   @override
-  NasaLibraryMediaTypes get selectedMediaType =>
-      (_$selectedMediaTypeComputed ??= Computed<NasaLibraryMediaTypes>(
-              () => super.selectedMediaType,
+  NasaMediaTypes get selectedMediaType => (_$selectedMediaTypeComputed ??=
+          Computed<NasaMediaTypes>(() => super.selectedMediaType,
               name: '_ExplorePageViewModelBase.selectedMediaType'))
-          .value;
+      .value;
   Computed<ObservableFuture<List<NasaLibraryItemModel>?>>?
       _$nasaLibraryFutureComputed;
 
@@ -55,13 +54,13 @@ mixin _$ExplorePageViewModel on _ExplorePageViewModelBase, Store {
       name: '_ExplorePageViewModelBase._selectedMediaType', context: context);
 
   @override
-  NasaLibraryMediaTypes get _selectedMediaType {
+  NasaMediaTypes get _selectedMediaType {
     _$_selectedMediaTypeAtom.reportRead();
     return super._selectedMediaType;
   }
 
   @override
-  set _selectedMediaType(NasaLibraryMediaTypes value) {
+  set _selectedMediaType(NasaMediaTypes value) {
     _$_selectedMediaTypeAtom.reportWrite(value, super._selectedMediaType, () {
       super._selectedMediaType = value;
     });
@@ -108,7 +107,7 @@ mixin _$ExplorePageViewModel on _ExplorePageViewModelBase, Store {
   }
 
   @override
-  void setSelectedMediaType(NasaLibraryMediaTypes mediaType) {
+  void setSelectedMediaType(NasaMediaTypes mediaType) {
     final _$actionInfo = _$_ExplorePageViewModelBaseActionController
         .startAction(name: '_ExplorePageViewModelBase.setSelectedMediaType');
     try {

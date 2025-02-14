@@ -7,9 +7,10 @@ class _HomePageFeaturedCarouselPageViewDots extends StatelessWidget {
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) {
+        final length = _viewModel.featuredApodList.value?.length ?? 1;
         return PageDots(
           currentPage: _viewModel.featuredPageIndex,
-          pageCount: dummyNasaApodEntities.length,
+          pageCount: length <= 0 ? 1 : length,
           onPageSelected: _viewModel.onFeaturedPageSelected,
           selectedColor: context.extTheme.byBrightness(
             light: context.appThemeExt.appColors.black.light.value,

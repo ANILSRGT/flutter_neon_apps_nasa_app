@@ -27,6 +27,8 @@ dependencies:
   video_player: ^2.9.2
   #* Used to play youtube videos
   youtube_player_flutter: ^9.1.1
+  #* Used to display video thumbnails
+  video_thumbnail: ^0.5.3
 
   #~ UI
   #* Used to app logo and other vector images

@@ -2,15 +2,18 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mobx/mobx.dart';
 import 'package:neon_apps_nasa_app/core/configs/app_vectors.dart';
 import 'package:neon_apps_nasa_app/core/enums/app_double_values.dart';
 import 'package:neon_apps_nasa_app/core/extensions/padding_app_double_values_extension.dart';
 import 'package:neon_apps_nasa_app/core/extensions/radius_app_double_values_extension.dart';
 import 'package:neon_apps_nasa_app/core/extensions/sizedbox_app_double_values_extension.dart';
 import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
+import 'package:neon_apps_nasa_app/core/routes/app_router.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
 import 'package:neon_apps_nasa_app/core/widgets/page_dots/page_dots.dart';
-import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_apod_entity.dart';
+import 'package:neon_apps_nasa_app/core/widgets/shimmer/shimmer.dart';
+import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_apod_model.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/explore/explore_page_imports.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/favorites/favorites_page_imports.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/home/home_page_view_model.dart';
@@ -18,6 +21,7 @@ import 'package:neon_apps_nasa_app/presentation/pages/mars/mars_page_imports.dar
 import 'package:neon_apps_nasa_app/presentation/widgets/app/custom_app_bar.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/card/title_card.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/image/custom_cached_network_image.dart';
+import 'package:neon_apps_nasa_app/presentation/widgets/players/video_player_thumbnail_widget.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/text/title_text.dart';
 
 part 'home_page.dart';

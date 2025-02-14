@@ -8,9 +8,14 @@ import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoPlayerWidget extends StatefulWidget {
-  const VideoPlayerWidget({required this.videoUrl, super.key});
+  const VideoPlayerWidget({
+    required this.videoUrl,
+    super.key,
+    this.canTouchable = true,
+  });
 
   final String videoUrl;
+  final bool canTouchable;
 
   @override
   VideoPlayerWidgetState createState() => VideoPlayerWidgetState();

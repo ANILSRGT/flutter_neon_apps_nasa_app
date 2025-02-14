@@ -11,7 +11,7 @@ import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart'
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
 import 'package:neon_apps_nasa_app/core/widgets/animated/animated_visibility.dart';
 import 'package:neon_apps_nasa_app/core/widgets/shimmer/shimmer.dart';
-import 'package:neon_apps_nasa_app/domains/enums/nasa_library_media_types.dart';
+import 'package:neon_apps_nasa_app/domains/enums/nasa_media_types.dart';
 import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_library_item_model.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/explore/explore_page_view_model.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/card/library_item_card.dart';

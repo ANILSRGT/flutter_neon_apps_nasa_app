@@ -7,6 +7,9 @@ class _LibraryDetailsPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isFavorite = context.watch<NasaFavoriteLibraryNotifier>().isFavorite(
+      libraryItem.data?.nasaId ?? '',
+    );
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -27,7 +30,17 @@ class _LibraryDetailsPageBody extends StatelessWidget {
                           () => context
                               .read<NasaFavoriteLibraryNotifier>()
                               .toggleFavorite(libraryItem),
-                      icon: const Icon(Icons.favorite_rounded),
+                      icon: Icon(
+                        isFavorite
+                            ? Icons.favorite_rounded
+                            : Icons.favorite_border_rounded,
+                        color:
+                            isFavorite
+                                ? context.appThemeExt.appColors.error
+                                    .byBrightness(context.extTheme.isDark)
+                                    .value
+                                : context.appThemeExt.appColors.grey.value,
+                      ),
                     ),
                   ],
                 ),

@@ -4,12 +4,12 @@ class _ExplorePageFiltersContentMediaTypeField extends StatelessWidget {
   const _ExplorePageFiltersContentMediaTypeField();
 
   Future<void> _onTapMediaSelect(BuildContext context) async {
-    final mediaType = await OptionBottomSheet.show<NasaLibraryMediaTypes>(
+    final mediaType = await OptionBottomSheet.show<NasaMediaTypes>(
       context: context,
       config: OptionBottomSheetConfig(
         title: 'Select Media Type',
         options:
-            NasaLibraryMediaTypes.values.map((e) {
+            NasaMediaTypes.values.map((e) {
               return OptionBottomSheetOption(value: e, label: e.displayName);
             }).toList(),
       ),

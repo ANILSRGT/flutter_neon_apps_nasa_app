@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:intl/intl.dart';
 import 'package:neon_apps_nasa_app/core/models/error/error_model.dart';
 import 'package:neon_apps_nasa_app/core/models/response/response_model.dart';
 import 'package:neon_apps_nasa_app/data/datasources/nasa/nasa_remote_source.dart';
@@ -30,7 +31,7 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
   @override
   Future<ResponseModel<NasaApodEntity>> getNasaApod() async {
     try {
-      final response = await _nasaApodDio.get<Map<String, dynamic>>('/');
+      final response = await _nasaApodDio.get<Map<String, dynamic>>('');
       final data = response.data;
       if (data == null) {
         return const ResponseModelFail(
@@ -59,8 +60,10 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
   ) async {
     try {
       final response = await _nasaApodDio.get<Map<String, dynamic>>(
-        '/',
-        queryParameters: {NasaApodQueryKeys.date: params.date},
+        '',
+        queryParameters: {
+          NasaApodQueryKeys.date: DateFormat('yyyy-MM-dd').format(params.date),
+        },
       );
       final data = response.data;
       if (data == null) {
@@ -89,12 +92,17 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
     NasaApodMultipleParams params,
   ) async {
     try {
-      final response = await _nasaApodDio.get<List<Map<String, dynamic>>>(
-        '/',
+      final response = await _nasaApodDio.get<List<dynamic>>(
+        '',
         queryParameters: {
           if (params.startDate != null)
-            NasaApodQueryKeys.startDate: params.startDate,
-          if (params.endDate != null) NasaApodQueryKeys.endDate: params.endDate,
+            NasaApodQueryKeys.startDate: DateFormat(
+              'yyyy-MM-dd',
+            ).format(params.startDate!),
+          if (params.endDate != null)
+            NasaApodQueryKeys.endDate: DateFormat(
+              'yyyy-MM-dd',
+            ).format(params.endDate!),
           if (params.count != null) NasaApodQueryKeys.count: params.count,
           if (params.thumbs != null) NasaApodQueryKeys.thumbs: params.thumbs,
         },
@@ -109,7 +117,10 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
           ),
         );
       }
-      final entities = data.map(NasaApodEntity.fromJson).toList();
+      final entities =
+          data
+              .map((e) => NasaApodEntity.fromJson(e as Map<String, dynamic>))
+              .toList();
       return ResponseModelSuccess(data: entities);
     } on Exception catch (e) {
       return ResponseModelFail(

@@ -23,6 +23,15 @@ mixin _$HomePageViewModel on _HomePageViewModelBase, Store {
           Computed<HomePageTabs>(() => super.currentHomePageTab,
               name: '_HomePageViewModelBase.currentHomePageTab'))
       .value;
+  Computed<ObservableFuture<List<NasaApodModel>?>>? _$featuredApodListComputed;
+
+  @override
+  ObservableFuture<List<NasaApodModel>?> get featuredApodList =>
+      (_$featuredApodListComputed ??=
+              Computed<ObservableFuture<List<NasaApodModel>?>>(
+                  () => super.featuredApodList,
+                  name: '_HomePageViewModelBase.featuredApodList'))
+          .value;
 
   late final _$_featuredPageIndexAtom =
       Atom(name: '_HomePageViewModelBase._featuredPageIndex', context: context);
@@ -56,6 +65,22 @@ mixin _$HomePageViewModel on _HomePageViewModelBase, Store {
     });
   }
 
+  late final _$_featuredApodListAtom =
+      Atom(name: '_HomePageViewModelBase._featuredApodList', context: context);
+
+  @override
+  ObservableFuture<List<NasaApodModel>?> get _featuredApodList {
+    _$_featuredApodListAtom.reportRead();
+    return super._featuredApodList;
+  }
+
+  @override
+  set _featuredApodList(ObservableFuture<List<NasaApodModel>?> value) {
+    _$_featuredApodListAtom.reportWrite(value, super._featuredApodList, () {
+      super._featuredApodList = value;
+    });
+  }
+
   late final _$_HomePageViewModelBaseActionController =
       ActionController(name: '_HomePageViewModelBase', context: context);
 
@@ -82,10 +107,22 @@ mixin _$HomePageViewModel on _HomePageViewModelBase, Store {
   }
 
   @override
+  void fetchFeaturedApodList() {
+    final _$actionInfo = _$_HomePageViewModelBaseActionController.startAction(
+        name: '_HomePageViewModelBase.fetchFeaturedApodList');
+    try {
+      return super.fetchFeaturedApodList();
+    } finally {
+      _$_HomePageViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 featuredPageIndex: ${featuredPageIndex},
-currentHomePageTab: ${currentHomePageTab}
+currentHomePageTab: ${currentHomePageTab},
+featuredApodList: ${featuredApodList}
     ''';
   }
 }

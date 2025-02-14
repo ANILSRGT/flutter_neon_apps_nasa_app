@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_apod_model.dart';
 import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_library_item_model.dart';
+import 'package:neon_apps_nasa_app/presentation/pages/apod_details/apod_details_page_imports.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/explore/explore_page_imports.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/favorites/favorites_page_imports.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/home/home_page_imports.dart';
@@ -24,6 +26,7 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: FavoritesRoute.page),
     AutoRoute(page: MarsRoute.page),
     AutoRoute(page: LibraryDetailsRoute.page),
+    AutoRoute(page: ApodDetailsRoute.page),
     AutoRoute(page: SettingsRoute.page),
   ];
 }

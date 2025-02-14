@@ -1,4 +1,4 @@
-import 'package:neon_apps_nasa_app/domains/enums/nasa_library_media_types.dart';
+import 'package:neon_apps_nasa_app/domains/enums/nasa_media_types.dart';
 
 class NasaLibraryGetParams {
   const NasaLibraryGetParams({
@@ -9,7 +9,7 @@ class NasaLibraryGetParams {
   });
 
   final String query;
-  final NasaLibraryMediaTypes? mediaType;
+  final NasaMediaTypes? mediaType;
   final int? yearStart;
   final int? yearEnd;
 }

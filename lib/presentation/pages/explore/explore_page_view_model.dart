@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:neon_apps_nasa_app/core/utils/penta_debouncer.dart';
-import 'package:neon_apps_nasa_app/domains/enums/nasa_library_media_types.dart';
+import 'package:neon_apps_nasa_app/domains/enums/nasa_media_types.dart';
 import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_library_item_model.dart';
 import 'package:neon_apps_nasa_app/domains/params/nasa/library/nasa_library_get_params.dart';
 import 'package:neon_apps_nasa_app/domains/usecases/nasa/library/nasa_library_get_usecase.dart';
@@ -33,7 +33,7 @@ abstract class _ExplorePageViewModelBase with Store {
   bool _isFilterVisible = false;
 
   @observable
-  NasaLibraryMediaTypes _selectedMediaType = NasaLibraryMediaTypes.image;
+  NasaMediaTypes _selectedMediaType = NasaMediaTypes.image;
 
   @computed
   bool get isFilterVisible => _isFilterVisible;
@@ -43,7 +43,7 @@ abstract class _ExplorePageViewModelBase with Store {
       ObservableFuture.value(null);
 
   @computed
-  NasaLibraryMediaTypes get selectedMediaType => _selectedMediaType;
+  NasaMediaTypes get selectedMediaType => _selectedMediaType;
 
   @computed
   ObservableFuture<List<NasaLibraryItemModel>?> get nasaLibraryFuture =>
@@ -55,7 +55,7 @@ abstract class _ExplorePageViewModelBase with Store {
   }
 
   @action
-  void setSelectedMediaType(NasaLibraryMediaTypes mediaType) {
+  void setSelectedMediaType(NasaMediaTypes mediaType) {
     _selectedMediaType = mediaType;
     imageTypeController.text = mediaType.displayName;
   }
@@ -87,7 +87,7 @@ abstract class _ExplorePageViewModelBase with Store {
   @action
   void clearFilters() {
     searchController.clear();
-    setSelectedMediaType(NasaLibraryMediaTypes.image);
+    setSelectedMediaType(NasaMediaTypes.image);
     yearFromController.clear();
     yearToController.clear();
   }

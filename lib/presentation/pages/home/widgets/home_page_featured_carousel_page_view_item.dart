@@ -1,20 +1,26 @@
 part of '../home_page_imports.dart';
 
 class _HomePageFeaturedCarouselPageViewItem extends StatelessWidget {
-  const _HomePageFeaturedCarouselPageViewItem({
-    required this.nasaApodEntity,
-  });
+  const _HomePageFeaturedCarouselPageViewItem({required this.model});
 
-  final NasaApodEntity nasaApodEntity;
+  final NasaApodModel? model;
 
   @override
   Widget build(BuildContext context) {
-    return TitleCard(
-      title: nasaApodEntity.title ?? '',
-      background: CustomCachedNetworkImage(
-        imageUrl: nasaApodEntity.url ?? '',
-        fit: BoxFit.cover,
-      ),
-    );
+    return model != null
+        ? GestureDetector(
+          onTap: () => context.router.push(ApodDetailsRoute(apod: model!)),
+          child: TitleCard(
+            title: model!.title ?? '',
+            background:
+                model?.mediaType == 'image'
+                    ? CustomCachedNetworkImage(
+                      imageUrl: model!.url ?? '',
+                      fit: BoxFit.cover,
+                    )
+                    : VideoPlayerThumbnailWidget(videoUrl: model!.url ?? ''),
+          ),
+        )
+        : TitleCard.noData();
   }
 }

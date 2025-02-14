@@ -6,9 +6,10 @@ class _HomePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: context.appThemeExt.appColors.background
-          .byBrightness(context.extTheme.isDark)
-          .value,
+      color:
+          context.appThemeExt.appColors.background
+              .byBrightness(context.extTheme.isDark)
+              .value,
       child: const SafeArea(
         child: Scaffold(
           extendBody: true,

@@ -1,7 +1,19 @@
 part of '../home_page_imports.dart';
 
-class _HomePageFeaturedCarousel extends StatelessWidget {
+class _HomePageFeaturedCarousel extends StatefulWidget {
   const _HomePageFeaturedCarousel();
+
+  @override
+  State<_HomePageFeaturedCarousel> createState() =>
+      _HomePageFeaturedCarouselState();
+}
+
+class _HomePageFeaturedCarouselState extends State<_HomePageFeaturedCarousel> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _viewModel.fetchFeaturedApodList();
+  }
 
   @override
   Widget build(BuildContext context) {
