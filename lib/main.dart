@@ -6,6 +6,7 @@ import 'package:neon_apps_nasa_app/core/enums/app_double_values.dart';
 import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
 import 'package:neon_apps_nasa_app/core/providers/nasa_favorite_library_notifier.dart';
 import 'package:neon_apps_nasa_app/core/providers/theme_notifier.dart';
+import 'package:neon_apps_nasa_app/core/providers/user_settings_notifier.dart';
 import 'package:neon_apps_nasa_app/core/routes/app_router.dart';
 import 'package:neon_apps_nasa_app/core/routes/observers/custom_route_observer.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
@@ -35,6 +36,9 @@ Future<void> main() async {
               ..setTheme(themeCache)
               ..setThemeMode(themeModeCache);
           },
+        ),
+        ChangeNotifierProvider(
+          create: (_) => UserSettingsNotifier()..loadUserSettings(),
         ),
         ChangeNotifierProvider(create: (_) => NasaFavoriteLibraryNotifier()),
       ],

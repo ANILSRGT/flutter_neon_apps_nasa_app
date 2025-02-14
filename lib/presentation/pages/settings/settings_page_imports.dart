@@ -7,6 +7,7 @@ import 'package:neon_apps_nasa_app/core/extensions/radius_app_double_values_exte
 import 'package:neon_apps_nasa_app/core/extensions/sizedbox_app_double_values_extension.dart';
 import 'package:neon_apps_nasa_app/core/extensions/theme_mode_extension.dart';
 import 'package:neon_apps_nasa_app/core/providers/theme_notifier.dart';
+import 'package:neon_apps_nasa_app/core/providers/user_settings_notifier.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/sheets/option_bottom_sheet.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/text/subtitle_text.dart';
@@ -21,3 +22,5 @@ part 'widgets/settings_page_theme_settings.dart';
 part 'widgets/settings_page_selector_item.dart';
 part 'widgets/settings_page_theme_selector.dart';
 part 'widgets/settings_page_theme_mode_selector.dart';
+part 'widgets/settings_page_configurations_settings.dart';
+part 'widgets/settings_page_auto_play_selector.dart';

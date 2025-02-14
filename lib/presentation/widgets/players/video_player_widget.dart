@@ -2,8 +2,10 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:neon_apps_nasa_app/core/enums/app_double_values.dart';
 import 'package:neon_apps_nasa_app/core/extensions/radius_app_double_values_extension.dart';
+import 'package:neon_apps_nasa_app/core/providers/user_settings_notifier.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/app/app_indicator.dart';
+import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -33,7 +35,9 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
     if (networkUrl.host == 'www.youtube.com') {
       _youtubeController = YoutubePlayerController(
         initialVideoId: YoutubePlayer.convertUrlToId(widget.videoUrl)!,
-        flags: const YoutubePlayerFlags(autoPlay: false),
+        flags: YoutubePlayerFlags(
+          autoPlay: context.read<UserSettingsNotifier>().userSettings.autoPlay,
+        ),
       );
       return;
     } else {
@@ -44,6 +48,9 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
         ..initialize().then((_) {
           _chewieController = ChewieController(
             videoPlayerController: _controller!,
+            autoPlay:
+                mounted &&
+                context.read<UserSettingsNotifier>().userSettings.autoPlay,
           );
           setState(() {});
         });
@@ -76,6 +83,11 @@ class VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                 child: YoutubePlayer(
                   controller: _youtubeController!,
                   showVideoProgressIndicator: true,
+                  bottomActions: const [
+                    CurrentPosition(),
+                    ProgressBar(isExpanded: true),
+                    RemainingDuration(),
+                  ],
                 ),
               )
               : ClipRRect(

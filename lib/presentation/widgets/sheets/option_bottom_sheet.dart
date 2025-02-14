@@ -7,20 +7,14 @@ import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart'
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
 
 class OptionBottomSheetConfig<T> {
-  const OptionBottomSheetConfig({
-    required this.title,
-    required this.options,
-  });
+  const OptionBottomSheetConfig({required this.title, required this.options});
 
   final String title;
   final List<OptionBottomSheetOption<T>> options;
 }
 
 class OptionBottomSheet<T> extends StatelessWidget {
-  const OptionBottomSheet({
-    required this.config,
-    super.key,
-  });
+  const OptionBottomSheet({required this.config, super.key});
 
   final OptionBottomSheetConfig<T> config;
 
@@ -37,22 +31,21 @@ class OptionBottomSheet<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: AppDoubleValues.md.extPadding.symmetric.horizontal +
+      padding:
+          AppDoubleValues.md.extPadding.symmetric.horizontal +
           AppDoubleValues.lg.extPadding.symmetric.vertical,
       decoration: BoxDecoration(
-        color: context.appThemeExt.appColors.background
-            .byBrightness(context.extTheme.isDark)
-            .value,
+        color:
+            context.appThemeExt.appColors.background
+                .byBrightness(context.extTheme.isDark)
+                .value,
         borderRadius: AppDoubleValues.xl.extRadius.border.all,
       ),
       child: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              config.title,
-              style: context.extTheme.textTheme.titleLarge,
-            ),
+            Text(config.title, style: context.extTheme.textTheme.titleLarge),
             AppDoubleValues.md.extSizedbox.height,
             Flexible(
               child: Scrollbar(
@@ -60,20 +53,25 @@ class OptionBottomSheet<T> extends StatelessWidget {
                 trackVisibility: true,
                 child: SingleChildScrollView(
                   child: Column(
-                    children: config.options
-                        .map(
-                          (option) => ListTile(
-                            title: Text(
-                              option.label,
-                              style: context.extTheme.textTheme.bodyLarge,
-                            ),
-                            onTap: () =>
-                                Navigator.of(context).pop(option.value),
-                          ),
-                        )
-                        .expand((element) => [element, const Divider()])
-                        .toList()
-                      ..removeLast(),
+                    mainAxisSize: MainAxisSize.min,
+                    children:
+                        config.options
+                            .map(
+                              (option) => ListTile(
+                                title: Text(
+                                  option.label,
+                                  style: context.extTheme.textTheme.bodyLarge,
+                                ),
+                                onTap:
+                                    () =>
+                                        Navigator.of(context).pop(option.value),
+                              ),
+                            )
+                            .expand(
+                              (element) => [element, const Divider(height: 0)],
+                            )
+                            .toList()
+                          ..removeLast(),
                   ),
                 ),
               ),
@@ -86,10 +84,7 @@ class OptionBottomSheet<T> extends StatelessWidget {
 }
 
 class OptionBottomSheetOption<T> {
-  const OptionBottomSheetOption({
-    required this.value,
-    required this.label,
-  });
+  const OptionBottomSheetOption({required this.value, required this.label});
 
   final T value;
   final String label;

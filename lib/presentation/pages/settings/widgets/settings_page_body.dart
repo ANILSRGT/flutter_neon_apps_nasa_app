@@ -14,6 +14,7 @@ class _SettingsPageBody extends StatelessWidget {
             AppDoubleValues.lg.extSizedbox.height,
             const _SettingsPageThemeSettings(),
             AppDoubleValues.lg.extSizedbox.height,
+            const _SettingsPageConfigurationsSettings(),
           ],
         ),
       ),

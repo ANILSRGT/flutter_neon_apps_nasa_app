@@ -14,7 +14,11 @@ class _ApodDetailsPageBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              if (context.router.canPop()) const BackButton(),
+              if (context.router.canPop())
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: BackButton(),
+                ),
               AppDoubleValues.xl2.extSizedbox.height,
               SizedBox(height: 200, child: _ApodDetailsPageMedia(apod: apod)),
               AppDoubleValues.xl2.extSizedbox.height,

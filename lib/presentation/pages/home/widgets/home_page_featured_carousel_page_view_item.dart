@@ -14,9 +14,12 @@ class _HomePageFeaturedCarouselPageViewItem extends StatelessWidget {
             title: model!.title ?? '',
             background:
                 model?.mediaType == 'image'
-                    ? CustomCachedNetworkImage(
-                      imageUrl: model!.url ?? '',
-                      fit: BoxFit.cover,
+                    ? Hero(
+                      tag: model!.url ?? '',
+                      child: CustomCachedNetworkImage(
+                        imageUrl: model!.url ?? '',
+                        fit: BoxFit.cover,
+                      ),
                     )
                     : VideoPlayerThumbnailWidget(videoUrl: model!.url ?? ''),
           ),

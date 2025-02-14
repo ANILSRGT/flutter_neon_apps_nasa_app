@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:neon_apps_nasa_app/core/theme/app_colors.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
 
-final class MainAppTheme extends IAppTheme {
+final class HalloweenAppTheme extends IAppTheme {
   @override
   AppColors get colors => const AppColors(
-    primary: OnColor(value: Color(0xFF5A1EFF), onColor: Color(0xFFFBFBFB)),
-    secondary: OnColor(value: Color(0xFF2A00A9), onColor: Color(0xFFFBFBFB)),
+    primary: OnColor(value: Color(0xFFFF5722), onColor: Color(0xFFFBFBFB)),
+    secondary: OnColor(value: Color(0xFF4CAF50), onColor: Color(0xFFFBFBFB)),
     background: BrightnessOnColor(
       light: OnColor(value: Color(0xFFFBFBFB), onColor: Color(0xFF1A1A1A)),
       dark: OnColor(value: Color(0xFF1A1A1A), onColor: Color(0xFFFBFBFB)),
