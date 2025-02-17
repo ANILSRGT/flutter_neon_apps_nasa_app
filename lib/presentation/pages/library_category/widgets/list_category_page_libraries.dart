@@ -49,38 +49,45 @@ class _ListCategoryPageLibrariesState
         return (widget.viewModel.isLoading && widget.viewModel.page == 1)
             ? LayoutBuilder(
               builder: (_, cst) {
-                return const GridViewShimmer(aspectRatio: 1.2, count: 10);
+                return Padding(
+                  padding: AppDoubleValues.md.extPadding.symmetric.horizontal,
+                  child: const GridViewShimmer(aspectRatio: 1.2, count: 10),
+                );
               },
             )
             : widget.viewModel.libraryItems.isEmpty
             ? const Center(child: Text('- No results found -'))
             : SingleChildScrollView(
               controller: _scrollController,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  LayoutBuilder(
-                    builder: (_, cst) {
-                      return GridView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: widget.viewModel.libraryItems.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: cst.maxWidth ~/ 180,
-                          crossAxisSpacing: AppDoubleValues.md.value,
-                          mainAxisSpacing: AppDoubleValues.md.value,
-                          childAspectRatio: 1.2,
-                        ),
-                        itemBuilder: (context, index) {
-                          final item = widget.viewModel.libraryItems[index];
-                          return LibraryItemCard(model: item);
-                        },
-                      );
-                    },
-                  ),
-                  if (widget.viewModel.isLoading)
-                    const GridViewShimmer(aspectRatio: 1.2, count: 2),
-                ],
+              child: Padding(
+                padding: AppDoubleValues.md.extPadding.symmetric.horizontal,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    LayoutBuilder(
+                      builder: (_, cst) {
+                        return GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: widget.viewModel.libraryItems.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: cst.maxWidth ~/ 180,
+                                crossAxisSpacing: AppDoubleValues.md.value,
+                                mainAxisSpacing: AppDoubleValues.md.value,
+                                childAspectRatio: 1.2,
+                              ),
+                          itemBuilder: (context, index) {
+                            final item = widget.viewModel.libraryItems[index];
+                            return LibraryItemCard(model: item);
+                          },
+                        );
+                      },
+                    ),
+                    if (widget.viewModel.isLoading)
+                      const GridViewShimmer(aspectRatio: 1.2, count: 2),
+                  ],
+                ),
               ),
             );
       },

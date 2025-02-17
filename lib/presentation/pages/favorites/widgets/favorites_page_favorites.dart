@@ -10,6 +10,7 @@ class _FavoritesPageFavorites extends StatelessWidget {
       builder: (_, cst) {
         return GridView.builder(
           itemCount: favorites.length,
+          padding: AppDoubleValues.md.extPadding.symmetric.horizontal,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: cst.maxWidth ~/ 180,
             crossAxisSpacing: AppDoubleValues.md.value,
