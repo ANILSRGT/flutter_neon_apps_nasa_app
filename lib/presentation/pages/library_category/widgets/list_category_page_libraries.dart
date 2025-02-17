@@ -49,27 +49,7 @@ class _ListCategoryPageLibrariesState
         return (widget.viewModel.isLoading && widget.viewModel.page == 1)
             ? LayoutBuilder(
               builder: (_, cst) {
-                return GridView.builder(
-                  shrinkWrap: true,
-                  itemCount: 10,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: cst.maxWidth ~/ 180,
-                    crossAxisSpacing: AppDoubleValues.md.value,
-                    mainAxisSpacing: AppDoubleValues.md.value,
-                    childAspectRatio: 1.2,
-                  ),
-                  itemBuilder: (_, index) {
-                    return ClipRRect(
-                      borderRadius: AppDoubleValues.md.extRadius.border.all,
-                      child: Shimmer.fromColors(
-                        baseColor: context.appThemeExt.appColors.grey.value,
-                        highlightColor:
-                            context.appThemeExt.appColors.lightGrey.value,
-                      ),
-                    );
-                  },
-                );
+                return const GridViewShimmer(aspectRatio: 1.2, count: 10);
               },
             )
             : widget.viewModel.libraryItems.isEmpty
@@ -99,38 +79,7 @@ class _ListCategoryPageLibrariesState
                     },
                   ),
                   if (widget.viewModel.isLoading)
-                    LayoutBuilder(
-                      builder: (_, cst) {
-                        return GridView.builder(
-                          shrinkWrap: true,
-                          itemCount: 2,
-                          physics: const NeverScrollableScrollPhysics(),
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: cst.maxWidth ~/ 180,
-                                crossAxisSpacing: AppDoubleValues.md.value,
-                                mainAxisSpacing: AppDoubleValues.md.value,
-                                childAspectRatio: 1.2,
-                              ),
-                          itemBuilder: (_, index) {
-                            return ClipRRect(
-                              borderRadius:
-                                  AppDoubleValues.md.extRadius.border.all,
-                              child: Shimmer.fromColors(
-                                baseColor:
-                                    context.appThemeExt.appColors.grey.value,
-                                highlightColor:
-                                    context
-                                        .appThemeExt
-                                        .appColors
-                                        .lightGrey
-                                        .value,
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    ),
+                    const GridViewShimmer(aspectRatio: 1.2, count: 2),
                 ],
               ),
             );

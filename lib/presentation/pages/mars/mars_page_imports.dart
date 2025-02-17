@@ -4,14 +4,12 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:neon_apps_nasa_app/core/enums/app_double_values.dart';
 import 'package:neon_apps_nasa_app/core/extensions/padding_app_double_values_extension.dart';
-import 'package:neon_apps_nasa_app/core/extensions/radius_app_double_values_extension.dart';
 import 'package:neon_apps_nasa_app/core/extensions/sizedbox_app_double_values_extension.dart';
-import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
-import 'package:neon_apps_nasa_app/core/widgets/shimmer/shimmer.dart';
 import 'package:neon_apps_nasa_app/domains/enums/nasa_rover_types.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/mars/mars_page_view_model.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/card/rover_card.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/sheets/option_bottom_sheet.dart';
+import 'package:neon_apps_nasa_app/presentation/widgets/shimmers/grid_view_shimmer.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/text_field/custom_input_field.dart';
 
 part 'mars_page.dart';

@@ -10,12 +10,12 @@ import 'package:neon_apps_nasa_app/core/extensions/sizedbox_app_double_values_ex
 import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
 import 'package:neon_apps_nasa_app/core/widgets/animated/animated_visibility.dart';
-import 'package:neon_apps_nasa_app/core/widgets/shimmer/shimmer.dart';
 import 'package:neon_apps_nasa_app/domains/enums/nasa_media_types.dart';
 import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_library_item_model.dart';
 import 'package:neon_apps_nasa_app/presentation/pages/explore/explore_page_view_model.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/card/library_item_card.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/sheets/option_bottom_sheet.dart';
+import 'package:neon_apps_nasa_app/presentation/widgets/shimmers/grid_view_shimmer.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/text_field/custom_input_field.dart';
 
 part 'explore_page.dart';

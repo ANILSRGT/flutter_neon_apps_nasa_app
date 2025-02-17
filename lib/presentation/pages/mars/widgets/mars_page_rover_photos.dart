@@ -12,31 +12,7 @@ class _MarsPageRoverPhotos extends StatelessWidget {
         final roverPhotos = viewModel.roverPhotos;
 
         if (roverPhotos.status == FutureStatus.pending) {
-          return LayoutBuilder(
-            builder: (_, cst) {
-              return GridView.builder(
-                shrinkWrap: true,
-                itemCount: 10,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: cst.maxWidth ~/ 180,
-                  crossAxisSpacing: AppDoubleValues.md.value,
-                  mainAxisSpacing: AppDoubleValues.md.value,
-                  childAspectRatio: 0.8,
-                ),
-                itemBuilder: (_, index) {
-                  return ClipRRect(
-                    borderRadius: AppDoubleValues.md.extRadius.border.all,
-                    child: Shimmer.fromColors(
-                      baseColor: context.appThemeExt.appColors.grey.value,
-                      highlightColor:
-                          context.appThemeExt.appColors.lightGrey.value,
-                    ),
-                  );
-                },
-              );
-            },
-          );
+          return const GridViewShimmer(aspectRatio: 1.2, count: 10);
         }
 
         final data = roverPhotos.value;
