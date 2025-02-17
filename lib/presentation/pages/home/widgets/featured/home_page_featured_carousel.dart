@@ -1,7 +1,9 @@
 part of '../../home_page_imports.dart';
 
 class _HomePageFeaturedCarousel extends StatefulWidget {
-  const _HomePageFeaturedCarousel();
+  const _HomePageFeaturedCarousel({required this.viewModel});
+
+  final HomePageViewModel viewModel;
 
   @override
   State<_HomePageFeaturedCarousel> createState() =>
@@ -12,7 +14,7 @@ class _HomePageFeaturedCarouselState extends State<_HomePageFeaturedCarousel> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _viewModel.fetchFeaturedApodList();
+    widget.viewModel.fetchFeaturedApodList();
   }
 
   @override
@@ -24,9 +26,13 @@ class _HomePageFeaturedCarouselState extends State<_HomePageFeaturedCarousel> {
         children: [
           const _HomePageFeaturedHeader(),
           AppDoubleValues.md.extSizedbox.height,
-          const Expanded(child: _HomePageFeaturedCarouselPageView()),
+          Expanded(
+            child: _HomePageFeaturedCarouselPageView(
+              viewModel: widget.viewModel,
+            ),
+          ),
           AppDoubleValues.md.extSizedbox.height,
-          const _HomePageFeaturedCarouselPageViewDots(),
+          _HomePageFeaturedCarouselPageViewDots(viewModel: widget.viewModel),
         ],
       ),
     );

@@ -1,13 +1,15 @@
 part of '../explore_page_imports.dart';
 
 class _ExplorePageResults extends StatelessWidget {
-  const _ExplorePageResults();
+  const _ExplorePageResults({required this.viewModel});
+
+  final ExplorePageViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) {
-        final items = _viewModel.nasaLibraryFuture;
+        final items = viewModel.nasaLibraryFuture;
 
         if (items.status == FutureStatus.pending) {
           return LayoutBuilder(

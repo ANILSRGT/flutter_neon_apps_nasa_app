@@ -1,7 +1,9 @@
 part of '../mars_page_imports.dart';
 
 class _MarsPageBody extends StatelessWidget {
-  const _MarsPageBody();
+  const _MarsPageBody({required this.viewModel});
+
+  final MarsPageViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +16,13 @@ class _MarsPageBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 AppDoubleValues.md.extSizedbox.height,
-                const _MarsPageEarthDatePicker(),
+                _MarsPageEarthDatePicker(viewModel: viewModel),
                 AppDoubleValues.md.extSizedbox.height,
-                const _MarsPageRoverSelector(),
+                _MarsPageRoverSelector(viewModel: viewModel),
                 AppDoubleValues.md.extSizedbox.height,
-                const _MarsPageSearchButton(),
+                _MarsPageSearchButton(viewModel: viewModel),
                 AppDoubleValues.md.extSizedbox.height,
-                const _MarsPageRoverPhotos(),
+                _MarsPageRoverPhotos(viewModel: viewModel),
               ],
             ),
           ),

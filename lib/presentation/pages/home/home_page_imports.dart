@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobx/mobx.dart';
@@ -25,6 +26,7 @@ import 'package:neon_apps_nasa_app/presentation/widgets/card/library_item_card.d
 import 'package:neon_apps_nasa_app/presentation/widgets/card/title_card.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/image/custom_cached_network_image.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/players/video_player_thumbnail_widget.dart';
+import 'package:neon_apps_nasa_app/presentation/widgets/text/label_text.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/text/title_text.dart';
 
 part 'home_page.dart';
@@ -43,3 +45,4 @@ part 'widgets/featured/home_page_featured_carousel_page_view_dots.dart';
 part 'widgets/library/home_page_library.dart';
 part 'widgets/library/home_page_library_header.dart';
 part 'widgets/library/home_page_library_items.dart';
+part 'widgets/library/home_page_library_see_all.dart';

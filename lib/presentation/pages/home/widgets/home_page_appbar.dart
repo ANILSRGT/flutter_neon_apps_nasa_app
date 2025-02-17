@@ -1,15 +1,15 @@
 part of '../home_page_imports.dart';
 
 class _HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const _HomePageAppBar();
+  const _HomePageAppBar({required this.viewModel});
+
+  final HomePageViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
     return Observer(
       builder: (context) {
-        return CustomAppBar(
-          title: _viewModel.currentHomePageTab.title,
-        );
+        return CustomAppBar(title: viewModel.currentHomePageTab.title);
       },
     );
   }

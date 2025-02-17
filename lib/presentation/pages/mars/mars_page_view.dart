@@ -1,12 +1,12 @@
 part of 'mars_page_imports.dart';
 
 class _MarsPageView extends StatelessWidget {
-  const _MarsPageView();
+  const _MarsPageView({required this.viewModel});
+
+  final MarsPageViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: _MarsPageBody(),
-    );
+    return Scaffold(body: _MarsPageBody(viewModel: viewModel));
   }
 }

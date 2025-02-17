@@ -1,7 +1,9 @@
 part of '../../home_page_imports.dart';
 
 class _HomePageBottomNavBar extends StatelessWidget {
-  const _HomePageBottomNavBar();
+  const _HomePageBottomNavBar({required this.viewModel});
+
+  final HomePageViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -18,20 +20,24 @@ class _HomePageBottomNavBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const _HomePageBottomNavBarItem(
+          _HomePageBottomNavBarItem(
+            viewModel: viewModel,
             tab: HomePageTabs.home,
-            icon: Icon(Icons.home_rounded),
+            icon: const Icon(Icons.home_rounded),
           ),
-          const _HomePageBottomNavBarItem(
+          _HomePageBottomNavBarItem(
+            viewModel: viewModel,
             tab: HomePageTabs.explore,
-            icon: Icon(Icons.explore_rounded),
+            icon: const Icon(Icons.explore_rounded),
           ),
-          const _HomePageBottomNavBarItem(
+          _HomePageBottomNavBarItem(
+            viewModel: viewModel,
             tab: HomePageTabs.favorites,
-            icon: Icon(Icons.favorite_rounded),
+            icon: const Icon(Icons.favorite_rounded),
           ),
           _HomePageBottomNavBarItem(
             tab: HomePageTabs.mars,
+            viewModel: viewModel,
             icon: Observer(
               builder: (_) {
                 return SvgPicture(
@@ -39,8 +45,9 @@ class _HomePageBottomNavBar extends StatelessWidget {
                     AppVectors.marsIcon,
                     colorMapper: AppVectors.marsIconColorMapper(
                       _HomePageBottomNavBarItem.iconColor(
-                        HomePageTabs.mars,
-                        context,
+                        context: context,
+                        isSelected:
+                            viewModel.currentHomePageTab == HomePageTabs.mars,
                       ),
                     ),
                   ),

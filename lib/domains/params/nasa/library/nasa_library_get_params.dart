@@ -6,6 +6,7 @@ class NasaLibraryGetParams {
     this.mediaType,
     this.yearStart,
     this.yearEnd,
+    this.page,
     this.pageSize,
   });
 
@@ -13,5 +14,6 @@ class NasaLibraryGetParams {
   final NasaMediaTypes? mediaType;
   final int? yearStart;
   final int? yearEnd;
+  final int? page;
   final int? pageSize;
 }

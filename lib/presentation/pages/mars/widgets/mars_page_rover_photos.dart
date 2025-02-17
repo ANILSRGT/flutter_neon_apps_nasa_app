@@ -1,13 +1,15 @@
 part of '../mars_page_imports.dart';
 
 class _MarsPageRoverPhotos extends StatelessWidget {
-  const _MarsPageRoverPhotos();
+  const _MarsPageRoverPhotos({required this.viewModel});
+
+  final MarsPageViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) {
-        final roverPhotos = _viewModel.roverPhotos;
+        final roverPhotos = viewModel.roverPhotos;
 
         if (roverPhotos.status == FutureStatus.pending) {
           return LayoutBuilder(
@@ -40,9 +42,7 @@ class _MarsPageRoverPhotos extends StatelessWidget {
         final data = roverPhotos.value;
 
         if (data == null || data.isEmpty) {
-          return const Center(
-            child: Text('- No photos found -'),
-          );
+          return const Center(child: Text('- No photos found -'));
         }
 
         final limitedRoverPhotos = data.take(20);

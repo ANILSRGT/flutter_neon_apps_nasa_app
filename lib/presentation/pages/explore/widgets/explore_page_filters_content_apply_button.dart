@@ -1,7 +1,9 @@
 part of '../explore_page_imports.dart';
 
 class _ExplorePageFiltersContentApplyButton extends StatelessWidget {
-  const _ExplorePageFiltersContentApplyButton();
+  const _ExplorePageFiltersContentApplyButton({required this.viewModel});
+
+  final ExplorePageViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -9,9 +11,9 @@ class _ExplorePageFiltersContentApplyButton extends StatelessWidget {
       builder: (_) {
         return ElevatedButton(
           onPressed:
-              _viewModel.nasaLibraryFuture.status == FutureStatus.pending
+              viewModel.nasaLibraryFuture.status == FutureStatus.pending
                   ? null
-                  : _viewModel.fetchNasaLibraryItems,
+                  : viewModel.fetchNasaLibraryItems,
           child: const Text('Research'),
         );
       },

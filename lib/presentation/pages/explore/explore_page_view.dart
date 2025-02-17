@@ -1,12 +1,12 @@
 part of 'explore_page_imports.dart';
 
 class _ExplorePageView extends StatelessWidget {
-  const _ExplorePageView();
+  const _ExplorePageView({required this.viewModel});
+
+  final ExplorePageViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: _ExplorePageBody(),
-    );
+    return Scaffold(body: _ExplorePageBody(viewModel: viewModel));
   }
 }

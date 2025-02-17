@@ -1,14 +1,16 @@
 part of '../explore_page_imports.dart';
 
 class _ExplorePageFilterButton extends StatelessWidget {
-  const _ExplorePageFilterButton();
+  const _ExplorePageFilterButton({required this.viewModel});
+
+  final ExplorePageViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1,
       child: IconButton(
-        onPressed: _viewModel.toggleFilterVisibility,
+        onPressed: viewModel.toggleFilterVisibility,
         style: IconButton.styleFrom(
           backgroundColor: context.appThemeExt.appColors.primary.value,
           foregroundColor: context.appThemeExt.appColors.primary.onColor,

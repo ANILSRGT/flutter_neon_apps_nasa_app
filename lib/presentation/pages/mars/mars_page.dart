@@ -1,7 +1,5 @@
 part of 'mars_page_imports.dart';
 
-final _viewModel = MarsPageViewModel();
-
 @RoutePage()
 class MarsPage extends StatefulWidget {
   const MarsPage({super.key});
@@ -11,7 +9,9 @@ class MarsPage extends StatefulWidget {
 }
 
 class _MarsPageState extends State<MarsPage>
-    with AutomaticKeepAliveClientMixin<MarsPage> {
+    with AutomaticKeepAliveClientMixin {
+  final _viewModel = MarsPageViewModel();
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -21,7 +21,7 @@ class _MarsPageState extends State<MarsPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return const _MarsPageView();
+    return _MarsPageView(viewModel: _viewModel);
   }
 
   @override

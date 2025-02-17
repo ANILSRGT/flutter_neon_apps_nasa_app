@@ -1,13 +1,21 @@
 part of '../../home_page_imports.dart';
 
 class _HomePageBottomNavBarItem extends StatelessWidget {
-  const _HomePageBottomNavBarItem({required this.tab, required this.icon});
+  const _HomePageBottomNavBarItem({
+    required this.tab,
+    required this.icon,
+    required this.viewModel,
+  });
 
   final HomePageTabs tab;
   final Widget icon;
+  final HomePageViewModel viewModel;
 
-  static Color iconColor(HomePageTabs tab, BuildContext context) {
-    return _viewModel.currentHomePageTab == tab
+  static Color iconColor({
+    required BuildContext context,
+    required bool isSelected,
+  }) {
+    return isSelected
         ? context.appThemeExt.appColors.background
             .byBrightness(context.extTheme.isDark)
             .value
@@ -18,7 +26,10 @@ class _HomePageBottomNavBarItem extends StatelessWidget {
   }
 
   Color _iconColor(BuildContext context) {
-    return _HomePageBottomNavBarItem.iconColor(tab, context);
+    return _HomePageBottomNavBarItem.iconColor(
+      context: context,
+      isSelected: viewModel.currentHomePageTab == tab,
+    );
   }
 
   @override
@@ -28,7 +39,7 @@ class _HomePageBottomNavBarItem extends StatelessWidget {
         return Tooltip(
           message: tab.title,
           child: IconButton(
-            onPressed: () => _viewModel.onTabPressed(tab),
+            onPressed: () => viewModel.onTabPressed(tab),
             color: _iconColor(context),
             icon: icon,
           ),

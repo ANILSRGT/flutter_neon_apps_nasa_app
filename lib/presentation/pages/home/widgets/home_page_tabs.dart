@@ -6,9 +6,7 @@ enum HomePageTabs {
   favorites(title: 'Favorites'),
   mars(title: 'Mars');
 
-  const HomePageTabs({
-    required this.title,
-  });
+  const HomePageTabs({required this.title});
 
   final String title;
 
@@ -16,14 +14,14 @@ enum HomePageTabs {
     return HomePageTabs.values[index < 0
         ? 0
         : index > HomePageTabs.values.length - 1
-            ? HomePageTabs.values.length - 1
-            : index];
+        ? HomePageTabs.values.length - 1
+        : index];
   }
 
-  Widget get page {
+  Widget page(Widget home) {
     switch (this) {
       case HomePageTabs.home:
-        return const _HomePageBody();
+        return home;
       case HomePageTabs.explore:
         return const ExplorePage();
       case HomePageTabs.favorites:

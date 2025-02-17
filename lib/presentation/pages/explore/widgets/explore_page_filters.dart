@@ -1,7 +1,9 @@
 part of '../explore_page_imports.dart';
 
 class _ExplorePageFilters extends StatelessWidget {
-  const _ExplorePageFilters();
+  const _ExplorePageFilters({required this.viewModel});
+
+  final ExplorePageViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -10,17 +12,17 @@ class _ExplorePageFilters extends StatelessWidget {
         IntrinsicHeight(
           child: Row(
             children: [
-              const Expanded(child: _ExplorePageSearchField()),
+              Expanded(child: _ExplorePageSearchField(viewModel: viewModel)),
               AppDoubleValues.md.extSizedbox.width,
-              const _ExplorePageFilterButton(),
+              _ExplorePageFilterButton(viewModel: viewModel),
             ],
           ),
         ),
-        if (_viewModel.isFilterVisible) AppDoubleValues.md.extSizedbox.height,
-        const _ExplorePageFiltersContent(),
-        const SizedBox(
+        if (viewModel.isFilterVisible) AppDoubleValues.md.extSizedbox.height,
+        _ExplorePageFiltersContent(viewModel: viewModel),
+        SizedBox(
           width: double.infinity,
-          child: _ExplorePageFiltersContentApplyButton(),
+          child: _ExplorePageFiltersContentApplyButton(viewModel: viewModel),
         ),
       ],
     );

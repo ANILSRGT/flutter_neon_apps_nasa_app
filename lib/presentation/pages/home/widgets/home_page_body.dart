@@ -1,7 +1,9 @@
 part of '../home_page_imports.dart';
 
 class _HomePageBody extends StatefulWidget {
-  const _HomePageBody();
+  const _HomePageBody({required this.viewModel});
+
+  final HomePageViewModel viewModel;
 
   @override
   State<_HomePageBody> createState() => _HomePageBodyState();
@@ -12,7 +14,7 @@ class _HomePageBodyState extends State<_HomePageBody>
   final PentaEventBus<void> _refreshEvent = PentaEventBus<void>();
 
   Future<void> _onRefresh() async {
-    _viewModel.fetchFeaturedApodList();
+    widget.viewModel.fetchFeaturedApodList();
     _refreshEvent.fire(null);
   }
 
@@ -33,12 +35,18 @@ class _HomePageBodyState extends State<_HomePageBody>
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AppDoubleValues.xl.extSizedbox.height,
-            const SizedBox(height: 300, child: _HomePageFeaturedCarousel()),
+            SizedBox(
+              height: 300,
+              child: _HomePageFeaturedCarousel(viewModel: widget.viewModel),
+            ),
             AppDoubleValues.xl.extSizedbox.height,
             ...HomePageLibraries.values
                 .map(
-                  (e) =>
-                      _HomePageLibrary(library: e, refreshEvent: _refreshEvent),
+                  (e) => _HomePageLibrary(
+                    library: e,
+                    refreshEvent: _refreshEvent,
+                    viewModel: widget.viewModel,
+                  ),
                 )
                 .expand(
                   (element) => [element, AppDoubleValues.xl.extSizedbox.height],

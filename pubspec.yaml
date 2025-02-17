@@ -10,58 +10,58 @@ dependencies:
   flutter:
     sdk: flutter
 
-  #~ Network
-  #* Used to make network requests
+  #* Network
+  #~ Used to make network requests
   dio: ^5.8.0+1
 
-  #~ Cache
-  #* Used to locally data for offline use
+  #* Cache
+  #~ Used to locally data for offline use
   hive: ^2.2.3
-  #* Used to easy to use hive
+  #~ Used to easy to use hive
   hive_flutter: ^1.1.0
 
-  #~ Video Player
-  #* Used to fix the black screen issue in the video_player plugin
+  #* Video Player
+  #~ Used to fix the black screen issue in the video_player plugin
   chewie: ^1.10.0
-  #* Used to play videos
+  #~ Used to play videos
   video_player: ^2.9.2
-  #* Used to play youtube videos
+  #~ Used to play youtube videos
   youtube_player_flutter: ^9.1.1
-  #* Used to display video thumbnails
+  #~ Used to display video thumbnails
   get_thumbnail_video: ^0.7.3
 
-  #~ UI
-  #* Used to app logo and other vector images
+  #* UI
+  #~ Used to app logo and other vector images
   flutter_svg: ^2.0.17
-  #* Used to loading indicator
+  #~ Used to loading indicator
   rive: ^0.13.20
-  #* Used to display images from the network with caching
+  #~ Used to display images from the network with caching
   cached_network_image: ^3.4.1
-  #* Used to toast messages
+  #~ Used to toast messages
   oktoast: ^3.4.0
 
-  #~ State Management
-  #* Used to manage the state of theme
+  #* State Management
+  #~ Used to manage the state of theme
   provider: ^6.1.2
-  #* Used to manage the state of pages
+  #~ Used to manage the state of pages
   mobx: ^2.5.0
-  #* Used to manage the state of pages
+  #~ Used to manage the state of pages
   flutter_mobx: ^2.3.0
 
-  #~ Dependency Injection
-  #* Used to inject dependencies (clean architecture)
+  #* Dependency Injection
+  #~ Used to inject dependencies (clean architecture)
   get_it: ^8.0.3
 
-  #~ Navigation
-  #* Used to navigate between screens
+  #* Navigation
+  #~ Used to navigate between screens
   auto_route: ^9.3.0+1
 
-  #~ Utils
-  #* Used to display the date and time
+  #* Utils
+  #~ Used to display the date and time
   intl: ^0.20.2
-  #* Used to environment variables
+  #~ Used to environment variables
   flutter_dotenv: ^5.2.1
-  #* Used to check the internet connection
+  #~ Used to check the internet connection
   internet_connection_checker_plus: ^2.7.0
 
 dev_dependencies:
@@ -69,18 +69,18 @@ dev_dependencies:
     sdk: flutter
   very_good_analysis: ^7.0.0
 
-  #~ Code Generation
-  #* Used to generate code for auto_route
+  #* Code Generation
+  #~ Used to generate code for auto_route
   build_runner: ^2.4.14
-  #* Used to generate code for hive
+  #~ Used to generate code for hive
   hive_generator: ^2.0.1
-  #* Used to generate code for auto_route
+  #~ Used to generate code for auto_route
   auto_route_generator: ^9.0.0
-  #* Used to generate code for mobx
+  #~ Used to generate code for mobx
   mobx_codegen: ^2.7.0
-  #* Used to app default splash screen
+  #~ Used to app default splash screen
   flutter_native_splash: ^2.4.4
-  #* Used to create the app icon
+  #~ Used to create the app icon
   flutter_launcher_icons: "^0.14.3"
 
 flutter:

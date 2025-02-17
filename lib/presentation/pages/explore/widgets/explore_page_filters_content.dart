@@ -1,7 +1,9 @@
 part of '../explore_page_imports.dart';
 
 class _ExplorePageFiltersContent extends StatelessWidget {
-  const _ExplorePageFiltersContent();
+  const _ExplorePageFiltersContent({required this.viewModel});
+
+  final ExplorePageViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +11,7 @@ class _ExplorePageFiltersContent extends StatelessWidget {
       builder: (_) {
         return AnimatedVisibility(
           duration: Durations.medium4,
-          visible: _viewModel.isFilterVisible,
+          visible: viewModel.isFilterVisible,
           child: Card(
             color:
                 context.appThemeExt.appColors.background
@@ -20,14 +22,22 @@ class _ExplorePageFiltersContent extends StatelessWidget {
               child: Column(
                 spacing: AppDoubleValues.md.value,
                 children: [
-                  const _ExplorePageFiltersContentMediaTypeField(),
+                  _ExplorePageFiltersContentMediaTypeField(
+                    viewModel: viewModel,
+                  ),
                   Row(
                     spacing: AppDoubleValues.md.value,
-                    children: const [
+                    children: [
                       Expanded(
-                        child: _ExplorePageFiltersContentYearFromField(),
+                        child: _ExplorePageFiltersContentYearFromField(
+                          viewModel: viewModel,
+                        ),
                       ),
-                      Expanded(child: _ExplorePageFiltersContentYearToField()),
+                      Expanded(
+                        child: _ExplorePageFiltersContentYearToField(
+                          viewModel: viewModel,
+                        ),
+                      ),
                     ],
                   ),
                 ],

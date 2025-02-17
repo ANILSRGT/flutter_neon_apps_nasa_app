@@ -1,7 +1,5 @@
 part of 'explore_page_imports.dart';
 
-final _viewModel = ExplorePageViewModel();
-
 @RoutePage()
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
@@ -11,7 +9,9 @@ class ExplorePage extends StatefulWidget {
 }
 
 class _ExplorePageState extends State<ExplorePage>
-    with AutomaticKeepAliveClientMixin<ExplorePage> {
+    with AutomaticKeepAliveClientMixin {
+  final _viewModel = ExplorePageViewModel();
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -21,7 +21,7 @@ class _ExplorePageState extends State<ExplorePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return const _ExplorePageView();
+    return _ExplorePageView(viewModel: _viewModel);
   }
 
   @override

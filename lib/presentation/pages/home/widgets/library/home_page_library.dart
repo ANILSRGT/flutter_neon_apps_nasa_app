@@ -1,8 +1,13 @@
 part of '../../home_page_imports.dart';
 
 class _HomePageLibrary extends StatefulWidget {
-  const _HomePageLibrary({required this.library, this.refreshEvent});
+  const _HomePageLibrary({
+    required this.library,
+    required this.viewModel,
+    this.refreshEvent,
+  });
 
+  final HomePageViewModel viewModel;
   final PentaEventBus<void>? refreshEvent;
   final HomePageLibraries library;
 
@@ -15,9 +20,9 @@ class _HomePageLibraryState extends State<_HomePageLibrary> {
   void initState() {
     super.initState();
     widget.refreshEvent?.on.listen((_) {
-      _viewModel.refreshLibraryList();
+      widget.viewModel.refreshLibraryList();
     });
-    _viewModel.fetchLibraryList(widget.library);
+    widget.viewModel.fetchLibraryList(widget.library);
   }
 
   @override
@@ -27,9 +32,19 @@ class _HomePageLibraryState extends State<_HomePageLibrary> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _HomePageLibraryHeader(title: widget.library.title),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            spacing: AppDoubleValues.md.value,
+            children: [
+              _HomePageLibraryHeader(title: widget.library.title),
+              _HomePageLibrarySeeAll(category: widget.library.title),
+            ],
+          ),
           AppDoubleValues.md.extSizedbox.height,
-          _HomePageLibraryItems(library: widget.library),
+          _HomePageLibraryItems(
+            library: widget.library,
+            viewModel: widget.viewModel,
+          ),
         ],
       ),
     );

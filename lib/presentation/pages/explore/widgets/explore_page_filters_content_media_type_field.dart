@@ -1,7 +1,9 @@
 part of '../explore_page_imports.dart';
 
 class _ExplorePageFiltersContentMediaTypeField extends StatelessWidget {
-  const _ExplorePageFiltersContentMediaTypeField();
+  const _ExplorePageFiltersContentMediaTypeField({required this.viewModel});
+
+  final ExplorePageViewModel viewModel;
 
   Future<void> _onTapMediaSelect(BuildContext context) async {
     final mediaType = await OptionBottomSheet.show<NasaMediaTypes>(
@@ -16,13 +18,13 @@ class _ExplorePageFiltersContentMediaTypeField extends StatelessWidget {
     );
 
     if (mediaType == null) return;
-    _viewModel.setSelectedMediaType(mediaType);
+    viewModel.setSelectedMediaType(mediaType);
   }
 
   @override
   Widget build(BuildContext context) {
     return CustomInputField(
-      controller: _viewModel.imageTypeController,
+      controller: viewModel.imageTypeController,
       hint: 'Image Type',
       prefixIcon: const Icon(Icons.photo_library_rounded),
       keyboardType: TextInputType.none,
