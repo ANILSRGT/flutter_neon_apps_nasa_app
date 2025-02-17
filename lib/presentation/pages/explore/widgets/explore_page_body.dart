@@ -12,6 +12,8 @@ class _ExplorePageBody extends StatelessWidget {
           children: [
             AppDoubleValues.xl.extSizedbox.height,
             const _ExplorePageFilters(),
+            AppDoubleValues.md.extSizedbox.height,
+            const _ExplorePageResults(),
           ],
         ),
       ),

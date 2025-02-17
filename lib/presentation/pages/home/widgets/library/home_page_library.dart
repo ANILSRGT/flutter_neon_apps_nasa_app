@@ -1,8 +1,9 @@
 part of '../../home_page_imports.dart';
 
 class _HomePageLibrary extends StatefulWidget {
-  const _HomePageLibrary({required this.library});
+  const _HomePageLibrary({required this.library, this.refreshEvent});
 
+  final PentaEventBus<void>? refreshEvent;
   final HomePageLibraries library;
 
   @override
@@ -13,6 +14,9 @@ class _HomePageLibraryState extends State<_HomePageLibrary> {
   @override
   void initState() {
     super.initState();
+    widget.refreshEvent?.on.listen((_) {
+      _viewModel.refreshLibraryList();
+    });
     _viewModel.fetchLibraryList(widget.library);
   }
 

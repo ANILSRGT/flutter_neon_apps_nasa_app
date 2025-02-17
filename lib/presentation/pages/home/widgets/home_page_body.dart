@@ -9,13 +9,24 @@ class _HomePageBody extends StatefulWidget {
 
 class _HomePageBodyState extends State<_HomePageBody>
     with AutomaticKeepAliveClientMixin {
+  final PentaEventBus<void> _refreshEvent = PentaEventBus<void>();
+
+  Future<void> _onRefresh() async {
+    _viewModel.fetchFeaturedApodList();
+    _refreshEvent.fire(null);
+  }
+
+  @override
+  void dispose() {
+    _refreshEvent.destroy();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
     return RefreshIndicator.adaptive(
-      onRefresh: () async {
-        _viewModel.fetchFeaturedApodList();
-      },
+      onRefresh: _onRefresh,
       child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
@@ -25,7 +36,10 @@ class _HomePageBodyState extends State<_HomePageBody>
             const SizedBox(height: 300, child: _HomePageFeaturedCarousel()),
             AppDoubleValues.xl.extSizedbox.height,
             ...HomePageLibraries.values
-                .map((e) => _HomePageLibrary(library: e))
+                .map(
+                  (e) =>
+                      _HomePageLibrary(library: e, refreshEvent: _refreshEvent),
+                )
                 .expand(
                   (element) => [element, AppDoubleValues.xl.extSizedbox.height],
                 )

@@ -18,8 +18,10 @@ class _ExplorePageFilters extends StatelessWidget {
         ),
         if (_viewModel.isFilterVisible) AppDoubleValues.md.extSizedbox.height,
         const _ExplorePageFiltersContent(),
-        AppDoubleValues.md.extSizedbox.height,
-        const _ExplorePageResults(),
+        const SizedBox(
+          width: double.infinity,
+          child: _ExplorePageFiltersContentApplyButton(),
+        ),
       ],
     );
   }

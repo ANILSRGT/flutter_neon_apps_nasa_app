@@ -28,7 +28,7 @@ abstract class _HomePageViewModelBase with Store {
       ObservableFuture.value(null);
 
   @observable
-  final Map<HomePageLibraries, ObservableFuture<List<NasaLibraryItemModel>?>>
+  Map<HomePageLibraries, ObservableFuture<List<NasaLibraryItemModel>?>>
   _libraryList = {
     for (var library in HomePageLibraries.values)
       library: ObservableFuture.value(null),
@@ -109,5 +109,13 @@ abstract class _HomePageViewModelBase with Store {
             return value.asSuccess.data;
           }),
     );
+  }
+
+  @action
+  void refreshLibraryList() {
+    for (final library in HomePageLibraries.values) {
+      fetchLibraryList(library);
+    }
+    _libraryList = Map.from(_libraryList);
   }
 }

@@ -32,6 +32,19 @@ mixin _$HomePageViewModel on _HomePageViewModelBase, Store {
                   () => super.featuredApodList,
                   name: '_HomePageViewModelBase.featuredApodList'))
           .value;
+  Computed<
+          Map<HomePageLibraries,
+              ObservableFuture<List<NasaLibraryItemModel>?>>>?
+      _$libraryListComputed;
+
+  @override
+  Map<HomePageLibraries, ObservableFuture<List<NasaLibraryItemModel>?>>
+      get libraryList => (_$libraryListComputed ??= Computed<
+                  Map<HomePageLibraries,
+                      ObservableFuture<List<NasaLibraryItemModel>?>>>(
+              () => super.libraryList,
+              name: '_HomePageViewModelBase.libraryList'))
+          .value;
 
   late final _$_featuredPageIndexAtom =
       Atom(name: '_HomePageViewModelBase._featuredPageIndex', context: context);
@@ -81,6 +94,25 @@ mixin _$HomePageViewModel on _HomePageViewModelBase, Store {
     });
   }
 
+  late final _$_libraryListAtom =
+      Atom(name: '_HomePageViewModelBase._libraryList', context: context);
+
+  @override
+  Map<HomePageLibraries, ObservableFuture<List<NasaLibraryItemModel>?>>
+      get _libraryList {
+    _$_libraryListAtom.reportRead();
+    return super._libraryList;
+  }
+
+  @override
+  set _libraryList(
+      Map<HomePageLibraries, ObservableFuture<List<NasaLibraryItemModel>?>>
+          value) {
+    _$_libraryListAtom.reportWrite(value, super._libraryList, () {
+      super._libraryList = value;
+    });
+  }
+
   late final _$_HomePageViewModelBaseActionController =
       ActionController(name: '_HomePageViewModelBase', context: context);
 
@@ -118,11 +150,34 @@ mixin _$HomePageViewModel on _HomePageViewModelBase, Store {
   }
 
   @override
+  void fetchLibraryList(HomePageLibraries library) {
+    final _$actionInfo = _$_HomePageViewModelBaseActionController.startAction(
+        name: '_HomePageViewModelBase.fetchLibraryList');
+    try {
+      return super.fetchLibraryList(library);
+    } finally {
+      _$_HomePageViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void refreshLibraryList() {
+    final _$actionInfo = _$_HomePageViewModelBaseActionController.startAction(
+        name: '_HomePageViewModelBase.refreshLibraryList');
+    try {
+      return super.refreshLibraryList();
+    } finally {
+      _$_HomePageViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 featuredPageIndex: ${featuredPageIndex},
 currentHomePageTab: ${currentHomePageTab},
-featuredApodList: ${featuredApodList}
+featuredApodList: ${featuredApodList},
+libraryList: ${libraryList}
     ''';
   }
 }

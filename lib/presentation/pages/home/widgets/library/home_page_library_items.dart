@@ -8,12 +8,12 @@ class _HomePageLibraryItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Observer(
-      builder: (context) {
+      builder: (_) {
         return SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children:
-                (_viewModel.libraryList[library]!.status == FutureStatus.pending
+                (_viewModel.libraryList[library]?.status == FutureStatus.pending
                         ? List.generate(
                           3,
                           (_) => SizedBox.square(
@@ -34,8 +34,9 @@ class _HomePageLibraryItems extends StatelessWidget {
                             ),
                           ),
                         )
-                        : _viewModel.libraryList[library]!.value == null
-                        ? [const Text('No data')]
+                        : _viewModel.libraryList[library]?.value == null ||
+                            _viewModel.libraryList[library]!.value!.isEmpty
+                        ? [const Text('- No data -')]
                         : List.generate(
                           _viewModel.libraryList[library]!.value!.length,
                           (index) {

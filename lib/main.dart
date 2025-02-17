@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:neon_apps_nasa_app/core/cache/cache_manager.dart';
 import 'package:neon_apps_nasa_app/core/configs/app_env.dart';
 import 'package:neon_apps_nasa_app/core/enums/app_double_values.dart';
@@ -15,7 +16,7 @@ import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
-  final binding = WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
@@ -40,7 +41,9 @@ Future<void> main() async {
         ChangeNotifierProvider(
           create: (_) => UserSettingsNotifier()..loadUserSettings(),
         ),
-        ChangeNotifierProvider(create: (_) => NasaFavoriteLibraryNotifier()),
+        ChangeNotifierProvider(
+          create: (_) => NasaFavoriteLibraryNotifier()..loadFavorites(),
+        ),
       ],
       child: MainApp(),
     ),
@@ -74,7 +77,36 @@ class MainApp extends StatelessWidget {
             radius: AppDoubleValues.md.value,
             dismissOtherOnShow: true,
             textAlign: TextAlign.center,
-            child: child!,
+            child: StreamBuilder(
+              stream:
+                  InternetConnection.createInstance(
+                    checkInterval: const Duration(seconds: 5),
+                  ).onStatusChange,
+              initialData: InternetStatus.connected,
+              builder: (context, snapshot) {
+                if (snapshot.data != null &&
+                    snapshot.data == InternetStatus.disconnected) {
+                  showToast(
+                    'No internet connection',
+                    duration: const Duration(seconds: 3),
+                    position: ToastPosition.bottom,
+                    backgroundColor:
+                        context.appThemeExt.appColorsRead.error
+                            .byBrightness(context.extTheme.isDark)
+                            .value,
+                    textStyle: context.extTheme.textTheme.bodyLarge?.copyWith(
+                      color:
+                          context.appThemeExt.appColorsRead.error
+                              .byBrightness(context.extTheme.isDark)
+                              .onColor,
+                    ),
+                    radius: AppDoubleValues.md.value,
+                    textAlign: TextAlign.center,
+                  );
+                }
+                return child!;
+              },
+            ),
           ),
         );
       },

@@ -20,8 +20,8 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-    AutoRoute(initial: true, page: SplashRoute.page),
-    AutoRoute(page: HomeRoute.page),
+    // AutoRoute(initial: true, page: SplashRoute.page),
+    AutoRoute(page: HomeRoute.page, initial: true),
     AutoRoute(page: ExploreRoute.page),
     AutoRoute(page: FavoritesRoute.page),
     AutoRoute(page: MarsRoute.page),

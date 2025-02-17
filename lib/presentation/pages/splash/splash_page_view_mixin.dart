@@ -10,7 +10,6 @@ mixin _SplashPageViewMixin on State<_SplashPageView> {
   }
 
   Future<void> _init() async {
-    context.read<NasaFavoriteLibraryNotifier>().loadFavorites();
     if (mounted) await context.router.replace(const HomeRoute());
   }
 }

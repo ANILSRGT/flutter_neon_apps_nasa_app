@@ -30,10 +30,6 @@ class _ExplorePageFiltersContent extends StatelessWidget {
                       Expanded(child: _ExplorePageFiltersContentYearToField()),
                     ],
                   ),
-                  const SizedBox(
-                    width: double.infinity,
-                    child: _ExplorePageFiltersContentApplyButton(),
-                  ),
                 ],
               ),
             ),

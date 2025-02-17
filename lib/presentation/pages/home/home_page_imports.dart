@@ -11,6 +11,7 @@ import 'package:neon_apps_nasa_app/core/extensions/sizedbox_app_double_values_ex
 import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
 import 'package:neon_apps_nasa_app/core/routes/app_router.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
+import 'package:neon_apps_nasa_app/core/utils/penta_event_bus.dart';
 import 'package:neon_apps_nasa_app/core/widgets/page_dots/page_dots.dart';
 import 'package:neon_apps_nasa_app/core/widgets/shimmer/shimmer.dart';
 import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_apod_model.dart';
