@@ -17,7 +17,7 @@ class _ExplorePageResults extends StatelessWidget {
 
         final itemsValue = items.value;
 
-        if (itemsValue == null) {
+        if (itemsValue == null || itemsValue.isEmpty) {
           return const Center(child: Text('- No results found -'));
         }
 
