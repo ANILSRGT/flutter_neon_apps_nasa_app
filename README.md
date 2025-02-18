@@ -14,13 +14,22 @@ This Flutter project utilizes the NASA API to provide users with a rich and inte
 
 ## Screenshots
 
+<style>
+    img[src*="#thumbnail"] {
+        height: 350px;
+        border-radius: 10px;
+    }
+</style>
+
 <div align="center">
-    <img src="resources/apod_details_screen.png" alt="APOD Details Screen" height="350px" style="border-radius:10px">
-    <img src="resources/explore_screen.png" alt="Explore Screen" height="350px" style="border-radius:10px">
-    <img src="resources/favorites_screen.png" alt="Favorites Screen" height="350px" style="border-radius:10px">
-    <img src="resources/home_screen.png" alt="Home Screen" height="350px" style="border-radius:10px">
-    <img src="resources/library_details_screen_image.png" alt="Library Details Screen Image" height="350px" style="border-radius:10px">
-    <img src="resources/library_details_screen_video.png" alt="Library Details Screen Video" height="350px" style="border-radius:10px">
-    <img src="resources/mars_screen.png" alt="Mars Screen" height="350px" style="border-radius:10px">
-    <img src="resources/settings_screen.png" alt="Settings Screen" height="350px" style="border-radius:10px">                            
+
+![Home Screen](resources/home_screen.png#thumbnail)
+![Explore Screen](resources/explore_screen.png#thumbnail)
+![Favorites Screen](resources/favorites_screen.png#thumbnail)
+![Mars Screen](resources/mars_screen.png#thumbnail)
+![APOD Details Screen](resources/apod_details_screen.png#thumbnail)
+![Library Details Screen Image](resources/library_details_screen_image.png#thumbnail)
+![Library Details Screen Video](resources/library_details_screen_video.png#thumbnail)
+![Settings Screen](resources/settings_screen.png#thumbnail)
+
 </div>
