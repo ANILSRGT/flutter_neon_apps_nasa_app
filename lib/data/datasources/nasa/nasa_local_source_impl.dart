@@ -5,7 +5,7 @@ import 'package:neon_apps_nasa_app/data/entities/nasa/nasa_library_item_entity.d
 class NasaLocalSourceImpl extends NasaLocalSource {
   @override
   List<NasaLibraryItemEntity> getNasaFavoriteLibrary() {
-    return CacheManager.I.nasa
+    return CacheManager.I.nasaLibraryFavorites
         .getFavoriteLibrary()
         .map((e) => NasaLibraryItemEntity.fromModel(model: e))
         .toList();
@@ -13,6 +13,6 @@ class NasaLocalSourceImpl extends NasaLocalSource {
 
   @override
   Future<void> toggleNasaFavoriteLibrary(NasaLibraryItemEntity entity) async {
-    await CacheManager.I.nasa.toggleFavoriteLibrary(entity);
+    await CacheManager.I.nasaLibraryFavorites.toggleFavoriteLibrary(entity);
   }
 }

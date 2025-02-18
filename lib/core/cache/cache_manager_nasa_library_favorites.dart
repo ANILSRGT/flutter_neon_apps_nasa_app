@@ -1,12 +1,12 @@
 part of 'cache_manager.dart';
 
-final class _CacheManagerNasaLibrary {
-  _CacheManagerNasaLibrary._init();
-  static final _CacheManagerNasaLibrary _instance =
-      _CacheManagerNasaLibrary._init();
-  static _CacheManagerNasaLibrary get I => _instance;
+final class _CacheManagerNasaLibraryFavorites {
+  _CacheManagerNasaLibraryFavorites._init();
+  static final _CacheManagerNasaLibraryFavorites _instance =
+      _CacheManagerNasaLibraryFavorites._init();
+  static _CacheManagerNasaLibraryFavorites get I => _instance;
 
-  static const _boxName = 'nasa_library';
+  static const _boxName = 'nasa_library_favorites';
 
   late final Box<NasaLibraryItemModel> _box;
 

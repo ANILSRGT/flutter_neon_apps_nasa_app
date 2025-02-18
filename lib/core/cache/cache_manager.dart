@@ -8,7 +8,7 @@ import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_library_item_model.d
 
 part 'cache_manager_theme_mode.dart';
 part 'cache_manager_theme.dart';
-part 'cache_manager_nasa_library.dart';
+part 'cache_manager_nasa_library_favorites.dart';
 part 'cache_manager_user_settings.dart';
 
 final class CacheManager {
@@ -18,14 +18,15 @@ final class CacheManager {
 
   final _CacheManagerTheme theme = _CacheManagerTheme.I;
   final _CacheManagerThemeMode themeMode = _CacheManagerThemeMode.I;
-  final _CacheManagerNasaLibrary nasa = _CacheManagerNasaLibrary.I;
+  final _CacheManagerNasaLibraryFavorites nasaLibraryFavorites =
+      _CacheManagerNasaLibraryFavorites.I;
   final _CacheManagerUserSettings userSettings = _CacheManagerUserSettings.I;
 
   Future<void> init() async {
     await Hive.initFlutter();
     await theme.initial();
     await themeMode.initial();
-    await nasa.initial();
+    await nasaLibraryFavorites.initial();
     await userSettings.initial();
   }
 
