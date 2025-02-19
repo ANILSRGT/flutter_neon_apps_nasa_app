@@ -9,16 +9,11 @@ class _LibraryDetailsPageMedia extends StatelessWidget {
   Widget build(BuildContext context) {
     return Builder(
       builder: (_) {
+        final url = libraryItem.mediaUrl;
         return switch (libraryItem.mediaType) {
-          NasaMediaTypes.video => VideoPlayerWidget(
-            videoUrl: libraryItem.libraryCollection!.firstWhere(
-              (e) => e.endsWith('small.mp4') || e.contains('youtube.com'),
-            ),
-          ),
+          NasaMediaTypes.video => VideoPlayerWidget(videoUrl: url),
           NasaMediaTypes.image => CustomCachedNetworkImage(
-            imageUrl: libraryItem.libraryCollection!.firstWhere(
-              (e) => e.endsWith('small.jpg'),
-            ),
+            imageUrl: url,
             fit: BoxFit.cover,
           ),
           _ => const SizedBox.shrink(),

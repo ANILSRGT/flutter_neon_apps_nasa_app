@@ -7,18 +7,22 @@ import 'package:neon_apps_nasa_app/core/extensions/sizedbox_app_double_values_ex
 import 'package:neon_apps_nasa_app/core/extensions/theme_context_extension.dart';
 import 'package:neon_apps_nasa_app/core/providers/nasa_favorite_library_notifier.dart';
 import 'package:neon_apps_nasa_app/core/theme/i_app_theme.dart';
+import 'package:neon_apps_nasa_app/core/utils/image_saver.dart';
 import 'package:neon_apps_nasa_app/domains/enums/nasa_media_types.dart';
 import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_library_item_data_model.dart';
 import 'package:neon_apps_nasa_app/domains/models/nasa/nasa_library_item_model.dart';
+import 'package:neon_apps_nasa_app/presentation/widgets/app/app_indicator.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/image/custom_cached_network_image.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/players/video_player_widget.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/text/label_text.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/text/subtitle_text.dart';
 import 'package:neon_apps_nasa_app/presentation/widgets/text/title_text.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
 part 'library_details_page.dart';
 part 'library_details_page_view.dart';
 part 'widgets/library_details_page_body.dart';
+part 'widgets/library_details_page_appbar.dart';
 part 'widgets/library_details_page_media.dart';
 part 'widgets/library_details_page_data_item.dart';

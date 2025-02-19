@@ -19,6 +19,18 @@ class NasaLibraryItemModel extends HiveObject {
   NasaMediaTypes? get mediaType => NasaMediaTypes.values.extWhere
       .firstWhereOrNull((element) => element.value == data?.mediaType);
 
+  String get mediaUrl {
+    return switch (mediaType) {
+      NasaMediaTypes.video => libraryCollection!.firstWhere(
+        (e) => e.endsWith('small.mp4') || e.contains('youtube.com'),
+      ),
+      NasaMediaTypes.image => libraryCollection!.firstWhere(
+        (e) => e.endsWith('small.jpg'),
+      ),
+      _ => '',
+    };
+  }
+
   static const dataKey = 'data';
   static const collectionKey = 'collection';
   static const itemsKey = 'items';
