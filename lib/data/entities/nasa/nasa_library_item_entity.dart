@@ -62,15 +62,20 @@ class NasaLibraryItemEntity extends NasaLibraryItemModel {
   }) async {
     final result = <NasaLibraryItemEntity>[];
     for (final json in jsonList.cast<Map<String, dynamic>>()) {
-      final libraryCollection = await libraryCollectionCallback(
-        json[NasaLibraryItemModel.libraryCollectionJsonKey] as String,
-      );
-      result.add(
-        NasaLibraryItemEntity._fromJson(
-          json: json,
-          libraryCollection: libraryCollection,
-        ),
-      );
+      try {
+        final libraryCollection = await libraryCollectionCallback(
+          json[NasaLibraryItemModel.libraryCollectionJsonKey] as String,
+        );
+
+        result.add(
+          NasaLibraryItemEntity._fromJson(
+            json: json,
+            libraryCollection: libraryCollection,
+          ),
+        );
+      } on Exception catch (_) {
+        continue;
+      }
     }
     return result;
   }

@@ -20,7 +20,7 @@ class _HomePageLibraryState extends State<_HomePageLibrary> {
   void initState() {
     super.initState();
     widget.refreshEvent?.on.listen((_) {
-      widget.viewModel.refreshLibraryList();
+      widget.viewModel.fetchLibraryList(widget.library);
     });
     widget.viewModel.fetchLibraryList(widget.library);
   }

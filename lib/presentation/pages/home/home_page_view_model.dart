@@ -95,28 +95,26 @@ abstract class _HomePageViewModelBase with Store {
 
   @action
   void fetchLibraryList(HomePageLibraries library) {
-    _libraryList[library] = ObservableFuture(
-      Injection.I
-          .read<NasaLibraryGetUsecase>()
-          .execute(
-            NasaLibraryGetParams(
-              query: library.query,
-              yearStart: DateTime.now().year,
-              pageSize: 10,
-            ),
-          )
-          .then((value) {
-            if (value.isFail) return [];
-            return value.asSuccess.data;
-          }),
-    );
-  }
-
-  @action
-  void refreshLibraryList() {
-    for (final library in HomePageLibraries.values) {
-      fetchLibraryList(library);
-    }
-    _libraryList = Map.from(_libraryList);
+    _libraryList = {
+      for (final key in _libraryList.keys)
+        key:
+            key == library
+                ? ObservableFuture(
+                  Injection.I
+                      .read<NasaLibraryGetUsecase>()
+                      .execute(
+                        NasaLibraryGetParams(
+                          query: library.query,
+                          yearStart: DateTime.now().year,
+                          pageSize: 10,
+                        ),
+                      )
+                      .then((value) {
+                        if (value.isFail) return [];
+                        return value.asSuccess.data;
+                      }),
+                )
+                : _libraryList[key] ?? ObservableFuture.value([]),
+    };
   }
 }

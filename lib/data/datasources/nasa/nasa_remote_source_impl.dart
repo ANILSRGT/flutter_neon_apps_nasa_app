@@ -175,7 +175,7 @@ class NasaRemoteSourceImpl extends NasaRemoteSource {
         queryParameters: {
           NasaLibraryQueryKeys.query: params.query,
           if (params.mediaType != null)
-            NasaLibraryQueryKeys.mediaType: params.mediaType!.name,
+            NasaLibraryQueryKeys.mediaType: params.mediaType!.value,
           if (params.yearStart != null)
             NasaLibraryQueryKeys.yearStart: params.yearStart,
           if (params.yearEnd != null)

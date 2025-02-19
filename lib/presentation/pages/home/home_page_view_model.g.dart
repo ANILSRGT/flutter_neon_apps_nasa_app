@@ -161,17 +161,6 @@ mixin _$HomePageViewModel on _HomePageViewModelBase, Store {
   }
 
   @override
-  void refreshLibraryList() {
-    final _$actionInfo = _$_HomePageViewModelBaseActionController.startAction(
-        name: '_HomePageViewModelBase.refreshLibraryList');
-    try {
-      return super.refreshLibraryList();
-    } finally {
-      _$_HomePageViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 featuredPageIndex: ${featuredPageIndex},
